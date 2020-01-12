@@ -128,7 +128,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.thundermart"
+        applicationId "com.saladfactory.thundermart"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

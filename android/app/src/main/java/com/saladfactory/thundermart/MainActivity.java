@@ -1,4 +1,4 @@
-package com.thundermart;
+package com.saladfactory.thundermart;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

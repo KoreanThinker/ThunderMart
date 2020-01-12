@@ -1,4 +1,4 @@
-package com.thundermart;
+package com.saladfactory.thundermart;
 
 import android.app.Application;
 import android.content.Context;
