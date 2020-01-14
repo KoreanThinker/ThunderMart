@@ -63,4 +63,3 @@ buck-out/
 # CocoaPods
 /ios/Pods/
 MISSION
-android/app/src/main/res/values/strings.xml
