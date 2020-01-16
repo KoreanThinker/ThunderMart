@@ -6,17 +6,21 @@ import useNavigation from '../../../hooks/useNavigation'
 import useAddress from '../../../hooks/useAddress'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 
+
+
+
+
 const AppendAddressScreen = () => {
     const navigation = useNavigation()
     const { onAppend } = useAddress()
 
-    const [basicAddress, setBasicAddress] = useState('asdfs')
+    const [basicAddress, setBasicAddress] = useState('')
     const [detailAddress, setDetailAddress] = useState('')
 
     const onSubmit = () => {
         if (basicAddress === '' || detailAddress === '') return;
-        onAppend(basicAddress + ' ' + detailAddress, ' ');
-        navigation.goBack()
+        onAppend(basicAddress + ' ' + detailAddress, basicAddress);
+        navigation.navigate('MainBottomTab')
     }
 
     const onBasic = () => {

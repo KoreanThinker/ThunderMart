@@ -65,7 +65,7 @@ const PhoneScreen = () => {
         goBack();
     }
     const goBack = () => {
-        navigation.navigate('CartStack')
+        navigation.navigate('MainBottomTab')
     }
 
     const onResend = () => {

@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../modules';
 import { useCallback } from 'react';
-import { remove, append } from '../modules/Address';
+import { remove, append, change } from '../modules/Address';
 
 export default function useAddress() {
     const presentAddress = useSelector((state: RootState) => state.Address.presentAddress);
@@ -10,12 +10,14 @@ export default function useAddress() {
     const dispatch = useDispatch();
 
     const onRemove = useCallback((id: number) => dispatch(remove(id)), [dispatch]);
-    const onAppend = useCallback((text: string, addressId: string) => dispatch(append(text, addressId)), [dispatch]);
+    const onAppend = useCallback((fullAddress: string, basicAddress: string) => dispatch(append(fullAddress, basicAddress)), [dispatch]);
+    const onChange = useCallback((id: number) => dispatch(change(id)), [dispatch]);
 
     return {
         presentAddress,
         recentAddresses,
         onRemove,
-        onAppend
+        onAppend,
+        onChange
     };
 }

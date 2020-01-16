@@ -10,12 +10,21 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 const AddressScreen = () => {
     const navigation = useNavigation()
 
-    const { recentAddresses, onRemove, presentAddress } = useAddress()
+    const { recentAddresses, onRemove, presentAddress, onChange } = useAddress()
     console.log(recentAddresses);
     console.log(presentAddress);
 
+    const onChangeAddress = (id: number) => {
+        onChange(id)
+        navigation.navigate('MainBottomTab')
+    }
+
     const RenderItem = (text: string, id: number) =>
-        <TouchableWithoutFeedback key={id} style={{ width: '100%', minHeight: 80, backgroundColor: 'white', ...shadow, alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, flexDirection: 'row', paddingLeft: 16, paddingVertical: 4 }}>
+        <TouchableWithoutFeedback
+            onPress={() => onChangeAddress(id)}
+            key={id}
+            style={{ width: '100%', minHeight: 80, backgroundColor: 'white', ...shadow, alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, flexDirection: 'row', paddingLeft: 16, paddingVertical: 4 }}
+        >
             <Text style={{ ...defaultFont, width: WIDTH - 76 }} >{text}</Text>
             <TouchableWithoutFeedback
                 onPress={() => onRemove(id)}
@@ -29,7 +38,7 @@ const AddressScreen = () => {
         <View style={{ flex: 1, backgroundColor: 'white' }}>
             <LeftArrowHeader title='배송지' goBack={() => navigation.navigate('MainBottomTab')} />
             <ScrollView style={{ flex: 1 }}>
-                {recentAddresses.map((info) => RenderItem(info.text, info.id))}
+                {recentAddresses.map((info) => RenderItem(info.fullAddress, info.id))}
                 <TouchableWithoutFeedback
                     onPress={() => navigation.navigate('AppendAddressScreen')}
                     style={{ width: '100%', height: 80, backgroundColor: 'white', ...shadow, alignItems: 'center', justifyContent: 'center', marginBottom: 60 }}
