@@ -38,13 +38,18 @@ function Address(state: AddressState = initialState, action: AddressAction): Add
         case APPEND:
             const id = Math.max(...state.recentAddresses.map(val => val.id));
             const newAddress = { fullAddress: action.fullAddress, basicAddress: action.basicAddress, id: id === -Infinity ? 0 : id + 1 }
-            return { ...state, recentAddresses: state.recentAddresses.concat(newAddress), presentAddress: newAddress }
+            return { ...state, recentAddresses: [newAddress, ...state.recentAddresses], presentAddress: newAddress }
         case CHANGE:
-            let adr: addressType | null = null;
+            let adr: addressType = {
+                fullAddress: '',
+                basicAddress: '',
+                id: 9999
+            };
             for (let i = 0; i < state.recentAddresses.length; i++) {
                 if (state.recentAddresses[i].id === action.id) adr = state.recentAddresses[i];
             }
-            return { ...state, presentAddress: adr }
+            let newRecentAdr = state.recentAddresses.filter(item => item.id !== action.id)
+            return { ...state, presentAddress: adr, recentAddresses: [adr, ...newRecentAdr] }
         default:
             return state;
     }

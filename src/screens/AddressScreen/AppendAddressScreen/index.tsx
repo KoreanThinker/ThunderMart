@@ -20,7 +20,7 @@ const AppendAddressScreen = () => {
     const onSubmit = () => {
         if (basicAddress === '' || detailAddress === '') return;
         onAppend(basicAddress + ' ' + detailAddress, basicAddress);
-        navigation.navigate('MainBottomTab')
+        navigation.goBack()
     }
 
     const onBasic = () => {
