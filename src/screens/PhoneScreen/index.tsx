@@ -54,6 +54,10 @@ const PhoneScreen = () => {
                 setSend(true)
                 setSendLoading(false);
             })
+            .catch(e => {
+                ToastAndroid.show('오류', ToastAndroid.SHORT)
+                goBack()
+            })
     }
 
     const onComplete = () => {
