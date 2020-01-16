@@ -7,6 +7,7 @@ import useNavigation from '../../../hooks/useNavigation';
 import { itemType } from '../../../components/types';
 import useCart from '../../../hooks/useCart';
 import { formatMoney } from '../../../components/functions'
+import LeftArrowHeader from '../../../components/Header/LeftArrowHeader'
 
 
 const ExamData: itemType[] = [
@@ -92,9 +93,8 @@ const CategoryDetailScreen = () => {
 
     return (
         <View style={{ flex: 1, backgroundColor: 'white' }}>
-            <View style={{ width: '100%', height: 80, backgroundColor: color1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontSize: 20, color: 'white', fontWeight: 'bold' }}>{'간식'}</Text>
-            </View>
+            <LeftArrowHeader title={'간식'} goBack={() => navigation.goBack()} />
+
             <FlatList
                 style={{ flex: 1 }}
                 data={ExamData}

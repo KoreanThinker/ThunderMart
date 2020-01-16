@@ -5,6 +5,7 @@ import usePhone from '../../hooks/usePhone';
 import { color1, WIDTH, shadow } from '../../components/style';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import sendSMS from '../../components/sendSMS';
+import LeftArrowHeader from '../../components/Header/LeftArrowHeader';
 
 
 const PhoneScreen = () => {
@@ -78,9 +79,7 @@ const PhoneScreen = () => {
 
     return (
         <View style={{ flex: 1, backgroundColor: 'white' }}>
-            <View style={{ width: '100%', height: 80, backgroundColor: color1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>휴대폰번호 변경</Text>
-            </View>
+            <LeftArrowHeader title='휴대폰번호 변경' goBack={() => navigation.navigate('MainBottomTab')} />
             <View style={{ width: '100%', marginTop: 20, paddingHorizontal: 30 }}>
                 {
                     !send
