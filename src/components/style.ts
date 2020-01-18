@@ -9,11 +9,11 @@ export const hightLightBlue = '#0096CE';
 
 const styles = StyleSheet.create({
     defaultFont: {
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: 'bold'
     },
     titleFont: {
-        fontSize: 20,
+        fontSize: 16,
         fontWeight: 'bold'
     }
 })
@@ -33,7 +33,7 @@ export const shadow = {
     elevation: 6,
 }
 
-export const headerHeight = 60
+export const headerHeight = 50
 
 export default {
     WIDTH,

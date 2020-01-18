@@ -4,6 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { color1, headerHeight } from '..//components/style';
 import Icon from 'react-native-vector-icons/Entypo'
+import { fromLeft, fromRight, flipX, fadeIn } from 'react-navigation-transitions';
 
 import HomeScreen, {
     CategoryDetailScreen,
@@ -32,17 +33,7 @@ import PhoneScreen from './PhoneScreen';
 
 
 
-const config = {
-    animation: 'spring',
-    config: {
-        stiffness: 1000,
-        damping: 500,
-        mass: 3,
-        overshootClamping: true,
-        restDisplacementThreshold: 0.01,
-        restSpeedThreshold: 0.01,
-    },
-};
+
 
 const HomeStack = createStackNavigator(
     {
@@ -55,12 +46,7 @@ const HomeStack = createStackNavigator(
         defaultNavigationOptions: {
             headerShown: false,
         },
-        navigationOptions: {
-            transitionSpec: {
-                open: config,
-                close: config
-            }
-        }
+        transitionConfig: () => fromRight()
     }
 );
 
@@ -72,7 +58,8 @@ const CartStack = createStackNavigator(
         initialRouteName: 'CartScreen',
         defaultNavigationOptions: {
             headerShown: false
-        }
+        },
+        transitionConfig: () => fromRight()
     }
 )
 
@@ -84,7 +71,8 @@ const OrderHistoryStack = createStackNavigator(
         initialRouteName: 'OrderHistoryScreen',
         defaultNavigationOptions: {
             headerShown: false
-        }
+        },
+        transitionConfig: () => fromRight()
     }
 )
 
@@ -96,7 +84,8 @@ const MoreStack = createStackNavigator(
         initialRouteName: 'MoreScreen',
         defaultNavigationOptions: {
             headerShown: false
-        }
+        },
+        transitionConfig: () => fromRight()
     }
 )
 
@@ -129,7 +118,7 @@ const MainBottomTab = createBottomTabNavigator(
                 backgroundColor: color1,
                 height: headerHeight
             }
-        }
+        },
     }
 );
 
@@ -144,7 +133,7 @@ const SignStack = createStackNavigator(
         initialRouteName: 'SignInScreen',
         defaultNavigationOptions: {
             headerShown: false
-        }
+        },
     }
 )
 
@@ -158,7 +147,8 @@ const AddressStack = createStackNavigator(
         initialRouteName: 'AddressScreen',
         defaultNavigationOptions: {
             headerShown: false
-        }
+        },
+        transitionConfig: () => fromRight()
     }
 )
 
@@ -170,7 +160,7 @@ const PhoneStack = createStackNavigator(
         initialRouteName: 'PhoneScreen',
         defaultNavigationOptions: {
             headerShown: false
-        }
+        },
     }
 )
 
@@ -187,7 +177,7 @@ const MainStack = createStackNavigator(
         defaultNavigationOptions: {
             headerShown: false
         },
-
+        transitionConfig: () => fromRight()
     }
 )
 
