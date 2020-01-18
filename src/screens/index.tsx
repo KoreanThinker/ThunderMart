@@ -2,7 +2,7 @@ import React from 'react'
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { color1 } from '..//components/style';
+import { color1, headerHeight } from '..//components/style';
 import Icon from 'react-native-vector-icons/Entypo'
 
 import HomeScreen, {
@@ -28,9 +28,21 @@ import AddressScreen, {
 import PhoneScreen from './PhoneScreen';
 
 
-/*
- * Navigation 관리 
- */
+
+
+
+
+const config = {
+    animation: 'spring',
+    config: {
+        stiffness: 1000,
+        damping: 500,
+        mass: 3,
+        overshootClamping: true,
+        restDisplacementThreshold: 0.01,
+        restSpeedThreshold: 0.01,
+    },
+};
 
 const HomeStack = createStackNavigator(
     {
@@ -42,6 +54,12 @@ const HomeStack = createStackNavigator(
         initialRouteName: 'HomeScreen',
         defaultNavigationOptions: {
             headerShown: false,
+        },
+        navigationOptions: {
+            transitionSpec: {
+                open: config,
+                close: config
+            }
         }
     }
 );
@@ -102,14 +120,14 @@ const MainBottomTab = createBottomTabNavigator(
                 } else if (routeName === 'MoreStack') {
                     iconName = 'dots-three-horizontal'
                 }
-                return <Icon name={iconName} size={40} color='white' />;
+                return <Icon name={iconName} size={32} color='white' />;
             },
         }),
         tabBarOptions: {
             showLabel: false,
             style: {
                 backgroundColor: color1,
-                height: 80
+                height: headerHeight
             }
         }
     }
@@ -156,6 +174,7 @@ const PhoneStack = createStackNavigator(
     }
 )
 
+
 const MainStack = createStackNavigator(
     {
         MainBottomTab,
@@ -167,7 +186,8 @@ const MainStack = createStackNavigator(
         initialRouteName: 'MainBottomTab',
         defaultNavigationOptions: {
             headerShown: false
-        }
+        },
+
     }
 )
 

@@ -60,6 +60,7 @@ const categorys = [ //서버로
     },
 ]
 
+
 const BOXSIZE = (WIDTH - 20) / 3
 
 const CategoryGrid = () => {
@@ -69,6 +70,7 @@ const CategoryGrid = () => {
     for (let i = 0; i < (((3 - (categorys.length % 3)) % 3)); i++) {
         emptyArray.push('');
     }
+
 
     const onCategory = (categoryKey: string) => {
         navigation.navigate('CategoryDetailScreen', { categoryKey })
@@ -92,12 +94,11 @@ const CategoryGrid = () => {
     const RenderEmpty = (index: number) => <View key={index} style={{ width: BOXSIZE, height: BOXSIZE, borderColor: '#dbdbdb', borderWidth: 0.5 }} />
 
     return (
-        <View style={{ width: WIDTH - 19, alignSelf: 'center', marginTop: 30, flexDirection: 'row', flexWrap: 'wrap', borderColor: '#dbdbdb', borderWidth: 0.5, marginBottom: 40 }}>
-            {categorys.map((item, index) => RenderItem(item, index))}
-            {
-
-                emptyArray.map((info, index) => RenderEmpty(index))
-            }
+        <View style={{ width: '100%' }}>
+            <View style={{ width: WIDTH - 19, alignSelf: 'center', marginTop: 30, flexDirection: 'row', flexWrap: 'wrap', borderColor: '#dbdbdb', borderWidth: 0.5, marginBottom: 40 }}>
+                {categorys.map((item, index) => RenderItem(item, index))}
+                {emptyArray.map((info, index) => RenderEmpty(index))}
+            </View>
         </View>
     )
 

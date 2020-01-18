@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, ScrollView } from 'react-native'
-import { color1, shadow } from '../../components/style'
+import { color1, shadow, headerHeight } from '../../components/style'
 import useNavigation from '../../hooks/useNavigation'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 
@@ -31,12 +31,16 @@ const MoreScreen = () => {
         {
             name: '친구에게 추천하기',
             onClick: () => { }
-        }
+        },
+        {
+            name: '로그아웃',
+            onClick: () => { }
+        },
     ]
 
     return (
         <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
-            <View style={{ backgroundColor: color1, width: '100%', height: 80, alignItems: 'center', justifyContent: 'center' }}>
+            <View style={{ backgroundColor: color1, width: '100%', height: headerHeight, alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>{userName}</Text>
             </View>
 

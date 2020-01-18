@@ -83,7 +83,7 @@ const CartScreen = () => {
                 ListEmptyComponent={
                     <TouchableWithoutFeedback
                         onPress={onAdd}
-                        style={{ width: '100%', height: 80, backgroundColor: 'white', ...shadow, alignItems: 'center', justifyContent: 'center' }}
+                        style={{ width: '100%', height: 60, backgroundColor: 'white', ...shadow, alignItems: 'center', justifyContent: 'center' }}
                     >
                         <Text style={{ fontSize: 20, fontWeight: 'bold' }}>상품을 추가해주세요</Text>
                     </TouchableWithoutFeedback>

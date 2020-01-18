@@ -33,11 +33,16 @@ export const shadow = {
     elevation: 6,
 }
 
+export const headerHeight = 60
+
 export default {
     WIDTH,
     HEIGHT,
     color1,
     shadow,
-    hightLightBlue
+    hightLightBlue,
+    headerHeight,
+    defaultFont,
+    titleFont
 }
 

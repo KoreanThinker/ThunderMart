@@ -14,7 +14,7 @@ const HomeScreen = () => {
     return (
         <ScrollView
             overScrollMode='never'
-
+            showsVerticalScrollIndicator={false}
             style={{ flex: 1, backgroundColor: 'white' }}
         >
             <AddressBanner />
