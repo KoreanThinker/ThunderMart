@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import useCart from '../../hooks/useCart'
 import { deliveryCharge } from '../../components/options'
 import { formatMoney } from '../../components/functions'
+import { titleFont } from '../../components/style'
 
 const PriceList = () => {
 
@@ -40,7 +41,6 @@ export default PriceList
 
 const styles = StyleSheet.create({
     text: {
-        fontSize: 20,
-        fontWeight: 'bold'
+        ...titleFont
     }
 })

@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, FlatList, TouchableOpacity, Animated } from 'react-native'
-import { color1, WIDTH, shadow, HEIGHT, hightLightBlue } from '../../components/style'
+import { color1, WIDTH, shadow, HEIGHT, hightLightBlue, cardHeight, titleFont, borderBottom } from '../../components/style'
 import useCart from '../../hooks/useCart';
 import { soldOutOption, minPrice } from '../../components/options'
 import Modal from "react-native-modal";
@@ -11,6 +11,8 @@ import usePhone from '../../hooks/usePhone';
 import PriceList from './PriceList';
 import CartItem from './CartItem'
 import AddressBanner from './AddressBanner';
+import RemoveManager from './RemoveManager';
+import ShadowBorderView from '../../components/View/ShadowBorderView';
 
 
 
@@ -28,6 +30,7 @@ const CartScreen = () => {
     for (let i = 0; i < cartList.length; i++) {
         ttlPrice += cartList[i].count * cartList[i].price
     }
+
 
     const onOrder = () => {
         if (!number) return
@@ -51,29 +54,30 @@ const CartScreen = () => {
                 data={cartList}
                 overScrollMode='never'
                 keyExtractor={(item) => item.id}
-                ListHeaderComponent={<AddressBanner />}
+                ListHeaderComponent={<>
+                    <AddressBanner />
+                    {cartList.length !== 0 && <RemoveManager />}
+                </>}
                 renderItem={({ item }) => <CartItem item={item} />}
                 ListFooterComponent={
                     <View style={{ width: '100%', alignItems: 'center', marginBottom: 40 }}>
                         <PriceList />
                         {/* 제품이없을경우 */}
-                        <TouchableWithoutFeedback
+                        <ShadowBorderView
                             onPress={() => setSoldOutModal(true)}
-                            style={{ width: WIDTH - 60, height: 60, backgroundColor: 'white', ...shadow, marginTop: 30, paddingHorizontal: 16, justifyContent: 'center' }}
-                        >
-                            <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{soldOutOption[soldOutOptionIndex]}</Text>
-                        </TouchableWithoutFeedback>
+                            value={soldOutOption[soldOutOptionIndex]}
+                            marginTop={30}
+                        />
                         {/* 연락처 */}
-                        <TouchableWithoutFeedback
-                            onPress={onPhoneSellect}
-                            style={{ width: WIDTH - 60, height: 60, backgroundColor: 'white', ...shadow, marginTop: 20, paddingHorizontal: 16, justifyContent: 'center' }}
-                        >
-                            <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{number ? number : '연락처'}</Text>
-                        </TouchableWithoutFeedback>
+                        <ShadowBorderView
+                            onPress={() => onPhoneSellect()}
+                            value={number ? number : '연락처'}
+                            marginTop={20}
+                        />
                         {/* 주문하기 */}
                         <TouchableWithoutFeedback
                             onPress={onOrder}
-                            style={{ width: WIDTH - 60, height: 60, backgroundColor: color1, marginTop: 48, justifyContent: 'center', alignItems: 'center', borderRadius: 30 }}
+                            style={{ width: WIDTH - 60, height: cardHeight, backgroundColor: color1, marginTop: 48, justifyContent: 'center', alignItems: 'center', borderRadius: 30 }}
                         >
                             <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>주문하기</Text>
                         </TouchableWithoutFeedback>
@@ -83,9 +87,9 @@ const CartScreen = () => {
                 ListEmptyComponent={
                     <TouchableWithoutFeedback
                         onPress={onAdd}
-                        style={{ width: '100%', height: 60, backgroundColor: 'white', ...shadow, alignItems: 'center', justifyContent: 'center' }}
+                        style={{ width: '100%', height: 120, backgroundColor: 'white', alignItems: 'center', justifyContent: 'center', ...borderBottom }}
                     >
-                        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>상품을 추가해주세요</Text>
+                        <Text style={{ ...titleFont }}>상품을 추가해주세요</Text>
                     </TouchableWithoutFeedback>
                 }
             />

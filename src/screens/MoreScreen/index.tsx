@@ -41,7 +41,7 @@ const MoreScreen = () => {
     return (
         <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
             <View style={{ backgroundColor: color1, width: '100%', height: headerHeight, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>{userName}</Text>
+                <Text style={{ ...titleFont, color: 'white' }}>더보기</Text>
             </View>
 
 
@@ -55,7 +55,7 @@ const MoreScreen = () => {
                 </TouchableWithoutFeedback>
             )}
 
-            <Text style={{ fontSize: 14, fontWeight: 'bold', alignSelf: 'center', marginTop: 14 }}>주식회사 썬더마트</Text>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', alignSelf: 'center', marginTop: 14 }}>주식회사 썬더마트</Text>
         </ScrollView>
     )
 }

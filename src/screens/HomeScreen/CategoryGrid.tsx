@@ -93,7 +93,7 @@ const CategoryGrid = () => {
                 source={{ uri: item.image }}
                 resizeMode={FastImage.resizeMode.contain}
             />
-            <Text style={{ ...defaultFont, marginTop: 6 }}>{item.name}</Text>
+            <Text style={{ fontSize: 13, fontWeight: 'bold', marginTop: 6 }}>{item.name}</Text>
         </TouchableWithoutFeedback>
 
     const RenderEmpty = (index: number) => <View key={index} style={{ width: BOXSIZE, height: BOXSIZE }} />

@@ -13,6 +13,7 @@ export const cardHeight = 56
 const styles = StyleSheet.create({
     defaultFont: {
         fontSize: 14,
+        fontWeight: 'bold'
     },
     middleFont: {
         fontSize: 14,
