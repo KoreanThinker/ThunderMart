@@ -99,8 +99,8 @@ const CategoryDetailScreen = () => {
                     <TouchableWithoutFeedback
                         onPress={() => onCancel(item.id)}
                         style={{ height: '100%', width: 110, alignItems: 'center', justifyContent: 'center' }}>
-                        <View style={{ width: 70, height: 20, borderRadius: 20, backgroundColor: color1, alignItems: 'center', justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 9, color: 'white', fontWeight: 'bold' }}>취소</Text>
+                        <View style={{ width: 70, height: 20, borderRadius: 20, backgroundColor: '#00000010', alignItems: 'center', justifyContent: 'center', }}>
+                            <Text style={{ fontSize: 10, fontWeight: 'bold' }}>취소</Text>
                         </View>
                     </TouchableWithoutFeedback>
 

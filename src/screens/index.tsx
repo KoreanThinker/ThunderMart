@@ -28,7 +28,7 @@ import AddressScreen, {
 
 import PhoneScreen from './PhoneScreen';
 
-
+import ChangeStoreScreen from './ChangeStoreScreen'
 
 
 
@@ -170,7 +170,8 @@ const MainStack = createStackNavigator(
         MainBottomTab,
         SignStack,
         AddressStack,
-        PhoneStack
+        PhoneStack,
+        ChangeStoreScreen
     },
     {
         initialRouteName: 'MainBottomTab',

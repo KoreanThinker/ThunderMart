@@ -2,10 +2,10 @@ import React from 'react'
 import { View, Text } from 'react-native'
 import useNavigation from '../../hooks/useNavigation';
 import useAddress from '../../hooks/useAddress';
-import style from '../../components/style';
+import style from '../style';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
-const AddressBanner = () => {
+const AddressHeader = () => {
     const navigation = useNavigation();
     const { presentAddress } = useAddress();
 
@@ -25,4 +25,4 @@ const AddressBanner = () => {
     )
 }
 
-export default AddressBanner
+export default AddressHeader

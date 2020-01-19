@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     },
     titleFont: {
         fontSize: 16,
+        fontWeight: 'bold'
     },
     bigFont: {
         fontSize: 20,
@@ -47,6 +48,10 @@ const styles = StyleSheet.create({
     alignCenter: {
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    defaultBorder: {
+        borderWidth: 1,
+        borderColor: '#dbdbdb'
     }
 })
 
@@ -69,6 +74,8 @@ export const shadowOpt = {
     x: 0,
     y: 0
 }
+
+export const defaultBorder = styles.defaultBorder;
 
 
 export default {
