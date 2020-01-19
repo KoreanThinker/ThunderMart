@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, Text, ScrollView } from 'react-native'
-import { shadow, defaultFont, WIDTH } from '../../components/style'
+import { View, Text, ScrollView, ToastAndroid } from 'react-native'
+import { shadow, defaultFont, WIDTH, cardHeight, borderBottom } from '../../components/style'
 import LeftArrowHeader from '../../components/Header/LeftArrowHeader'
 import useNavigation from '../../hooks/useNavigation'
 import useAddress from '../../hooks/useAddress'
@@ -17,20 +17,21 @@ const AddressScreen = () => {
     const onChangeAddress = (id: number) => {
         onChange(id)
         navigation.navigate('MainBottomTab')
+        ToastAndroid.show('배송지가 변경되었습니다', ToastAndroid.SHORT)
     }
 
     const RenderItem = (text: string, id: number) =>
         <TouchableWithoutFeedback
             onPress={() => onChangeAddress(id)}
             key={id}
-            style={{ width: '100%', minHeight: 80, backgroundColor: 'white', ...shadow, alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, flexDirection: 'row', paddingLeft: 16, paddingVertical: 4 }}
+            style={{ width: '100%', minHeight: cardHeight, backgroundColor: 'white', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row', paddingLeft: 16, paddingVertical: 4, ...borderBottom }}
         >
             <Text style={{ ...defaultFont, width: WIDTH - 76 }} >{text}</Text>
             <TouchableWithoutFeedback
                 onPress={() => onRemove(id)}
-                style={{ alignItems: 'center', justifyContent: 'center', height: 80, width: 60 }}
+                style={{ alignItems: 'center', justifyContent: 'center', height: 50, width: 50 }}
             >
-                <Icon name='close' size={24} />
+                <Icon name='close' size={20} />
             </TouchableWithoutFeedback>
         </TouchableWithoutFeedback>
 
@@ -41,7 +42,7 @@ const AddressScreen = () => {
                 {recentAddresses.map((info) => RenderItem(info.fullAddress, info.id))}
                 <TouchableWithoutFeedback
                     onPress={() => navigation.navigate('AppendAddressScreen')}
-                    style={{ width: '100%', height: 80, backgroundColor: 'white', ...shadow, alignItems: 'center', justifyContent: 'center', marginBottom: 60 }}
+                    style={{ width: '100%', height: cardHeight, backgroundColor: 'white', alignItems: 'center', justifyContent: 'center' }}
                 >
                     <Text style={defaultFont} >주소 추가하기</Text>
                 </TouchableWithoutFeedback>

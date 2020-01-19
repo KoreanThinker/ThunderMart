@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import { color1, headerHeight } from '../style'
+import { color1, headerHeight, titleFont } from '../style'
 import Icon from 'react-native-vector-icons/AntDesign'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import useNavigation from '../../hooks/useNavigation'
@@ -14,15 +14,15 @@ const LeftArrowHeader: React.FunctionComponent<LeftArrowHeaderProps> = ({ title,
     const navigation = useNavigation()
     return (
         <View style={{ width: '100%', height: headerHeight, alignItems: 'center', justifyContent: 'center', backgroundColor: color1 }}>
-            <View style={{ position: 'absolute', left: 20 }}>
+            <View style={{ position: 'absolute', left: 0, width: 50, alignItems: 'center' }}>
                 <TouchableWithoutFeedback
                     onPress={() => goBack()}
                 >
-                    <Icon name='arrowleft' size={28} color='white' />
+                    <Icon name='arrowleft' size={24} color='white' />
                 </TouchableWithoutFeedback>
             </View>
 
-            <Text style={{ fontSize: 20, color: 'white', fontWeight: 'bold' }}>{title}</Text>
+            <Text style={{ ...titleFont, color: 'white' }}>{title}</Text>
         </View>
     )
 }

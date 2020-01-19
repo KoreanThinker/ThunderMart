@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text } from 'react-native'
 import { FlatGrid } from 'react-native-super-grid';
 import FastImage from 'react-native-fast-image'
-import { WIDTH } from '../../components/style';
+import { WIDTH, defaultFont } from '../../components/style';
 import useNavigation from '../../hooks/useNavigation';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
@@ -88,7 +88,7 @@ const CategoryGrid = () => {
                 source={{ uri: item.image }}
                 resizeMode={FastImage.resizeMode.contain}
             />
-            <Text style={{ fontSize: 16, marginTop: 4, fontWeight: 'bold' }}>{item.name}</Text>
+            <Text style={{ ...defaultFont, marginTop: 4 }}>{item.name}</Text>
         </TouchableWithoutFeedback>
 
     const RenderEmpty = (index: number) => <View key={index} style={{ width: BOXSIZE, height: BOXSIZE, borderColor: '#dbdbdb', borderWidth: 0.5 }} />

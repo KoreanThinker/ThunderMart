@@ -16,9 +16,9 @@ const AddressBanner = () => {
     return (
         <TouchableWithoutFeedback
             onPress={onAddress}
-            style={{ width: style.WIDTH, height: style.headerHeight, backgroundColor: style.color1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 20 }}
+            style={{ width: style.WIDTH, height: style.headerHeight, backgroundColor: style.color1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 50 }}
         >
-            <Text style={{ fontSize: 20, color: 'white', fontWeight: 'bold' }} numberOfLines={1}>
+            <Text style={{ ...style.titleFont, color: 'white' }} numberOfLines={1}>
                 {presentAddress !== null ? presentAddress?.fullAddress : '주소를 입력해주세요'}
             </Text>
         </TouchableWithoutFeedback>

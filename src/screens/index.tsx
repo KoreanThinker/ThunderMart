@@ -109,7 +109,7 @@ const MainBottomTab = createBottomTabNavigator(
                 } else if (routeName === 'MoreStack') {
                     iconName = 'dots-three-horizontal'
                 }
-                return <Icon name={iconName} size={32} color='white' />;
+                return <Icon name={iconName} size={28} color='white' />;
             },
         }),
         tabBarOptions: {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, ScrollView } from 'react-native'
-import { color1, shadow, headerHeight } from '../../components/style'
+import { color1, shadow, headerHeight, titleFont, defaultFont, borderBottom, cardHeight, middleFont } from '../../components/style'
 import useNavigation from '../../hooks/useNavigation'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 
@@ -49,13 +49,13 @@ const MoreScreen = () => {
                 <TouchableWithoutFeedback
                     key={index}
                     onPress={item.onClick}
-                    style={{ width: '100%', height: 60, backgroundColor: 'white', ...shadow, paddingHorizontal: 16, justifyContent: 'center', marginBottom: 16 }}
+                    style={{ width: '100%', height: cardHeight, backgroundColor: 'white', paddingHorizontal: 16, justifyContent: 'center', ...borderBottom }}
                 >
-                    <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{item.name}</Text>
+                    <Text style={{ ...middleFont }}>{item.name}</Text>
                 </TouchableWithoutFeedback>
             )}
 
-            <Text style={{ fontSize: 14, fontWeight: 'bold', alignSelf: 'center', marginTop: 8 }}>주식회사 썬더마트</Text>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', alignSelf: 'center', marginTop: 14 }}>주식회사 썬더마트</Text>
         </ScrollView>
     )
 }
