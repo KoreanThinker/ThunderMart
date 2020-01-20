@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     },
     shadowBox: {
         height: cardHeight,
-        borderRadius: 16,
+        borderRadius: 12,
     },
     alignCenter: {
         alignItems: 'center',
@@ -69,8 +69,8 @@ export const alignCenter = styles.alignCenter;
 
 export const shadowOpt = {
     color: "#000",
-    border: 10,
-    radius: 16,
+    border: 8,
+    radius: 12,
     opacity: 0.04,
     x: 0,
     y: 0

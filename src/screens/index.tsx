@@ -3,12 +3,11 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { color1, headerHeight } from '..//components/style';
-import Icon from 'react-native-vector-icons/Entypo'
+import Icon from 'react-native-vector-icons/AntDesign'
 import { fromLeft, fromRight, flipX, fadeIn } from 'react-navigation-transitions';
 
 import HomeScreen, {
-    CategoryDetailScreen,
-    ItemSearchScreen
+    CategoryDetailScreen
 } from './HomeScreen';
 
 import CartScreen from './CartScreen'
@@ -28,9 +27,9 @@ import AddressScreen, {
 
 import PhoneScreen from './PhoneScreen';
 
-import ChangeStoreScreen from './ChangeStoreScreen'
-
-
+import ItemSearchScreen, {
+    ItemSearchedScreen,
+} from './ItemSearchScreen'
 
 
 
@@ -38,8 +37,7 @@ import ChangeStoreScreen from './ChangeStoreScreen'
 const HomeStack = createStackNavigator(
     {
         HomeScreen,
-        CategoryDetailScreen,
-        ItemSearchScreen
+        CategoryDetailScreen
     },
     {
         initialRouteName: 'HomeScreen',
@@ -93,7 +91,7 @@ const MainBottomTab = createBottomTabNavigator(
     {
         HomeStack,
         CartStack,
-        // OrderHistoryStack,
+        OrderHistoryStack,
         MoreStack
     },
     {
@@ -102,21 +100,26 @@ const MainBottomTab = createBottomTabNavigator(
             tabBarIcon: ({ focused, horizontal, tintColor }) => {
                 const { routeName } = navigation.state;
                 let iconName: string = '';
+                let size = 28;
                 if (routeName === 'HomeStack') {
                     iconName = 'home'
                 } else if (routeName === 'CartStack') {
-                    iconName = 'shopping-cart'
+                    iconName = 'shoppingcart'
+                } else if (routeName === 'OrderHistoryStack') {
+                    iconName = 'bars'
                 } else if (routeName === 'MoreStack') {
-                    iconName = 'dots-three-horizontal'
+                    iconName = 'ellipsis1'
                 }
-                return <Icon name={iconName} size={28} color='white' />;
+                return <Icon name={iconName} size={size} color={focused ? '#000' : '#00000080'} />;
             },
         }),
         tabBarOptions: {
             showLabel: false,
             style: {
-                backgroundColor: color1,
-                height: headerHeight
+                backgroundColor: 'white',
+                height: headerHeight,
+                borderTopColor: '#dbdbdb',
+                borderTopWidth: 0.5
             }
         },
     }
@@ -164,6 +167,20 @@ const PhoneStack = createStackNavigator(
     }
 )
 
+const ItemSearchStack = createStackNavigator(
+    {
+        ItemSearchScreen,
+        ItemSearchedScreen
+    },
+    {
+        initialRouteName: 'ItemSearchScreen',
+        defaultNavigationOptions: {
+            headerShown: false
+        },
+        transitionConfig: () => fromRight()
+    }
+)
+
 
 const MainStack = createStackNavigator(
     {
@@ -171,7 +188,7 @@ const MainStack = createStackNavigator(
         SignStack,
         AddressStack,
         PhoneStack,
-        ChangeStoreScreen
+        ItemSearchStack,
     },
     {
         initialRouteName: 'MainBottomTab',

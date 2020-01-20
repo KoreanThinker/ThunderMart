@@ -6,6 +6,9 @@ export const minPrice = 10000
 
 export const soldOutOption = [
     '제품이 없을 경우 담기 방법 설정',
-    '옵션2',
-    '옵션3'
+    '배송 전 전화',
+    '유사한 상품으로 대체',
+    '품절상품 금액만큼 환불'
 ]
+
+export const shopSearchRadius = 1000; //단위 m

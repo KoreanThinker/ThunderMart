@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, FlatList } from 'react-native'
-import useNavigation from '../../../hooks/useNavigation';
-import { itemType } from '../../../components/types';
-import useCart from '../../../hooks/useCart';
 import LeftArrowHeader from '../../../components/Header/LeftArrowHeader'
+import useNavigation from '../../../hooks/useNavigation'
+import { alignCenter, borderBottom, titleFont } from '../../../components/style'
+import { itemType } from '../../../components/types'
 import DefaultItemCard from '../../../components/Card/DefaultItemCard'
+
+type NavigationParams = {
+    text: string
+}
 
 
 const ExamData: itemType[] = [
@@ -46,24 +50,30 @@ const ExamData: itemType[] = [
     }
 ]
 
-const CategoryDetailScreen = () => {
-    const navigation = useNavigation();
-
+const ItemSearchedScreen = () => {
+    const navigation = useNavigation<NavigationParams>()
+    const [data, setData] = useState<itemType[]>(ExamData)
 
 
 
     return (
         <View style={{ flex: 1, backgroundColor: 'white' }}>
-            <LeftArrowHeader title={'간식'} goBack={() => navigation.goBack()} />
-
-            <FlatList
-                style={{ flex: 1 }}
-                data={ExamData}
-                renderItem={({ item }) => <DefaultItemCard item={item} />}
-                keyExtractor={(item) => item.id}
+            <LeftArrowHeader
+                title={navigation.state.params?.text}
+                goBack={() => navigation.goBack()}
             />
+            <FlatList
+                data={data}
+                renderItem={({ item }) => <DefaultItemCard item={item} />}
+                ListEmptyComponent={
+                    <View style={{ width: '100%', height: 200, ...alignCenter, ...borderBottom }}>
+                        <Text style={{ ...titleFont, color: '#777' }} >검색결과가 없습니다</Text>
+                    </View>
+                }
+            />
+
         </View>
     )
 }
 
-export default CategoryDetailScreen
+export default ItemSearchedScreen

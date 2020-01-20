@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, FlatList, TouchableOpacity, Animated } from 'react-native'
-import { color1, WIDTH, shadow, HEIGHT, hightLightBlue, cardHeight, titleFont, borderBottom } from '../../components/style'
+import { color1, WIDTH, shadow, HEIGHT, hightLightBlue, cardHeight, titleFont, borderBottom, middleFont, defaultFont } from '../../components/style'
 import useCart from '../../hooks/useCart';
 import { soldOutOption, minPrice } from '../../components/options'
 import Modal from "react-native-modal";
@@ -114,7 +114,7 @@ const CartScreen = () => {
                             style={{ width: '100%', height: 50, alignItems: 'center', justifyContent: 'center' }}
                         >
 
-                            <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{item}</Text>
+                            <Text style={{ ...defaultFont }}>{item}</Text>
                         </TouchableOpacity>
                     )}
                 </View>

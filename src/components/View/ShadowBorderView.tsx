@@ -17,9 +17,9 @@ const ShadowBorderView: React.FunctionComponent<ShadowBorderViewProps> = ({ valu
             width: WIDTH - 60,
             height: cardHeight,
             color: '#000',
-            border: 10,
+            border: 8,
             radius: 16,
-            opacity: 0.06,
+            opacity: 0.04,
             x: 0,
             y: 0,
             style: {

@@ -53,7 +53,7 @@ const AppendAddressScreen = () => {
                 <DefaultInput
                     placeholder='정확히 입력해주세요'
                     value={detailAddress}
-                    onChange={t => setDetailAddress(t)}
+                    onChangeText={t => setDetailAddress(t)}
                 />
 
 

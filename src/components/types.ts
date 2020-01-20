@@ -4,3 +4,5 @@ export type itemType = {
     image: string,
     price: number
 }
+
+export type shopNameType = 'GS' | 'CU' | 'SEVEN' | 'ELSE'

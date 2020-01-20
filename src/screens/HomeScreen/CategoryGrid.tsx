@@ -1,11 +1,16 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React, { useState } from 'react'
+import { View, Text, Image } from 'react-native'
 import { FlatGrid } from 'react-native-super-grid';
 import FastImage from 'react-native-fast-image'
 import { WIDTH, defaultFont, alignCenter } from '../../components/style';
 import useNavigation from '../../hooks/useNavigation';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/Entypo'
+import { TouchableWithoutFeedback, BorderlessButton } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import useShop from '../../hooks/useShop';
+import { shopType2Logo } from '../../components/functions';
+import { shopNameType } from '../../components/types';
+import useCart from '../../hooks/useCart';
+import useAddress from '../../hooks/useAddress';
 
 
 const categorys = [ //서버로
@@ -64,8 +69,18 @@ const categorys = [ //서버로
 
 const BOXSIZE = (WIDTH - 48) / 3
 
+const ShopList: shopNameType[] = ['CU', 'GS', 'SEVEN']
+
+
+
+
 const CategoryGrid = () => {
     const navigation = useNavigation();
+    const { shopType, onChange } = useShop()
+    const { onRemoveAll } = useCart()
+    const { presentAddress } = useAddress()
+
+    const [shopChange, setShopChange] = useState(false)
 
     const emptyArray: string[] = []
     for (let i = 0; i < (((3 - (categorys.length % 3)) % 3)); i++) {
@@ -77,8 +92,13 @@ const CategoryGrid = () => {
         navigation.navigate('CategoryDetailScreen', { categoryKey })
     }
 
-    const onStore = () => {
-        navigation.navigate('ChangeStoreScreen');
+    const onShopPress = (type: shopNameType) => {
+        if (type !== shopType) {
+            onChange(type)
+            onRemoveAll()
+        }
+
+        setShopChange(false)
     }
 
 
@@ -100,28 +120,95 @@ const CategoryGrid = () => {
 
     return (
         <>
-            <View style={{ width: WIDTH - 40, alignSelf: 'center', borderColor: '#dbdbdb', borderRadius: 16, borderWidth: 1, backgroundColor: 'white', marginTop: 20 }}>
-                <TouchableWithoutFeedback
-                    onPress={onStore}
-                    style={{ width: WIDTH - 30, alignSelf: 'center', height: 56, borderRadius: 16, alignItems: 'center', justifyContent: 'center' }}
-                >
-                    <View style={{ position: 'absolute', left: 0, width: 90, ...alignCenter }}>
-                        <FastImage
-                            style={{ height: 30, width: 50 }}
-                            source={{ uri: 'https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2FbdcEzt%2FbtqwO6vBvi1%2F4rXyAZ3e2s0QSbxFDuEh7k%2Fimg.jpg' }}
-                            resizeMode={FastImage.resizeMode.contain}
-                        />
-                    </View>
-                    <Text style={{ fontSize: 14, fontWeight: 'bold' }} >CU 부산 해운대점</Text>
-                    <View style={{ position: 'absolute', right: 0, width: 90, ...alignCenter }}>
-                        <Icon name='location-pin' size={22} />
-                    </View>
-                </TouchableWithoutFeedback>
+            <View style={{ width: WIDTH - 40, alignSelf: 'center', borderColor: '#dbdbdb', borderRadius: 12, borderWidth: 1, backgroundColor: 'white', marginTop: 20 }}>
+                {
+                    presentAddress !== null
+                        ?
+                        !shopChange && shopType !== null
+                            ?
+                            <>
+                                <View style={{ width: WIDTH - 30, alignSelf: 'center', height: 56, borderRadius: 16, alignItems: 'center', justifyContent: 'center' }}>
+                                    <View style={{}}>
+                                        <FastImage
+                                            style={{ height: 24, width: 70 }}
+                                            source={{ uri: shopType2Logo(shopType) }}
+                                            resizeMode={FastImage.resizeMode.contain}
+                                        />
+                                    </View>
+                                    <View style={{ position: 'absolute', right: 0, width: 80, ...alignCenter }}>
+                                        <BorderlessButton
+                                            onPress={() => setShopChange(true)}
+                                        >
+                                            <Icon name='swap-horizontal' size={24} color='rgba(0, 0, 0, 0.5)' />
+                                        </BorderlessButton>
+                                    </View>
+                                </View>
 
-                <View style={{ width: '100%', alignSelf: 'center', marginTop: 4, flexDirection: 'row', flexWrap: 'wrap', marginBottom: 6, justifyContent: 'center' }}>
-                    {categorys.map((item, index) => RenderItem(item, index))}
-                    {emptyArray.map((info, index) => RenderEmpty(index))}
-                </View>
+                                <View style={{ width: '100%', alignSelf: 'center', marginTop: 4, flexDirection: 'row', flexWrap: 'wrap', marginBottom: 6, justifyContent: 'center' }}>
+                                    {categorys.map((item, index) => RenderItem(item, index))}
+                                    {emptyArray.map((info, index) => RenderEmpty(index))}
+                                </View>
+                            </>
+                            :
+                            <>
+                                {ShopList.length !== 0
+                                    ?
+                                    <>
+                                        <View style={{ width: WIDTH - 30, alignSelf: 'center', height: 56, borderRadius: 16, alignItems: 'center', justifyContent: 'center' }}>
+                                            <Text style={{ ...defaultFont }} >{shopType === null ? '편의점을 선택해주세요' : '변경시 장바구니는 초기화됩니다'}</Text>
+                                            {shopType !== null && <View style={{ position: 'absolute', right: 0, width: 80, ...alignCenter }}>
+                                                <BorderlessButton
+                                                    onPress={() => setShopChange(false)}
+                                                >
+                                                    <Icon name='close' size={24} color='rgba(0, 0, 0, 0.5)' />
+                                                </BorderlessButton>
+                                            </View>}
+                                        </View>
+                                        <View style={{ width: '100%', height: 80, flexDirection: 'row' }}>
+                                            {ShopList.map((item, index) =>
+                                                <View
+                                                    key={index}
+                                                    style={{ flex: 1, ...alignCenter }}
+                                                >
+                                                    <TouchableWithoutFeedback
+                                                        onPress={() => onShopPress(item)}
+                                                    >
+                                                        <FastImage
+                                                            style={{ height: 30, width: 50 }}
+                                                            source={{ uri: shopType2Logo(item) }}
+                                                            resizeMode={FastImage.resizeMode.contain}
+                                                        />
+                                                    </TouchableWithoutFeedback>
+                                                </View>
+                                            )}
+                                        </View>
+                                    </>
+                                    :
+                                    <>
+                                        {/* 주변에 편의점이 없을때 */}
+                                    </>
+                                }
+                            </>
+
+                        :
+                        <>
+                            <TouchableWithoutFeedback
+                                onPress={() => navigation.navigate('AddressStack')}
+                            >
+                                <View style={{ width: WIDTH - 30, alignSelf: 'center', height: 56, borderRadius: 16, alignItems: 'center', justifyContent: 'center' }}>
+                                    <Text style={{ ...defaultFont }} >주소를 입력해주세요</Text>
+                                </View>
+                                <View style={{ height: 130, alignSelf: 'center', ...alignCenter, marginBottom: 10 }}>
+                                    <Image
+                                        style={{ height: 120, width: 120 }}
+                                        // resizeMode={FastImage.resizeMode.contain}
+                                        source={require('../../asset/IconClear.png')}
+                                    />
+                                </View>
+                            </TouchableWithoutFeedback>
+                        </>
+                }
+
             </View>
         </>
     )

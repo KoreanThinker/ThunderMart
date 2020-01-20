@@ -27,4 +27,3 @@ const HomeScreen = () => {
 
 export default HomeScreen
 export { default as CategoryDetailScreen } from './CategoryDetailScreen'
-export { default as ItemSearchScreen } from './ItemSearchScreen'

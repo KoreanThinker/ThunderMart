@@ -5,6 +5,8 @@ import AsyncStorage from '@react-native-community/async-storage';
 import Address from './Address';
 import Cart from './Cart';
 import Phone from './Phone';
+import Shop from './Shop';
+import ItemSearch from './ItemSearch'
 
 export type RootState = ReturnType<typeof rootReducer>;
 
@@ -17,7 +19,9 @@ const persistConfig = {
 const rootReducer = combineReducers({
     Address: persistReducer(persistConfig, Address),
     Phone: persistReducer(persistConfig, Phone),
-    Cart
+    Shop: persistReducer(persistConfig, Shop),
+    itemSearch: persistReducer(persistConfig, ItemSearch),
+    Cart,
 })
 
 

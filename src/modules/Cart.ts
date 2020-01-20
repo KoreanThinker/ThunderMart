@@ -10,6 +10,7 @@ const PLUS = 'cart/PLUS' as const;
 const MINUS = 'cart/MINUS' as const;
 const TOGGLE = 'cart/TOGGLE' as const;
 const TOGGLEALL = 'cart/TOGGLEALL' as const;
+const REMOVEALL = 'cart/REMOVEALL' as const;
 
 //액션 생성 함수 선언
 export const append = (itemInfo: itemType) => ({ type: APPEND, itemInfo });
@@ -19,6 +20,7 @@ export const plus = (id: string) => ({ type: PLUS, id })
 export const minus = (id: string) => ({ type: MINUS, id })
 export const toggle = (id: string) => ({ type: TOGGLE, id })
 export const toggleAll = () => ({ type: TOGGLEALL })
+export const removeAll = () => ({ type: REMOVEALL })
 
 
 //리듀서 type 지정
@@ -29,7 +31,8 @@ type CartAction =
     | ReturnType<typeof plus>
     | ReturnType<typeof minus>
     | ReturnType<typeof toggle>
-    | ReturnType<typeof toggleAll>;
+    | ReturnType<typeof toggleAll>
+    | ReturnType<typeof removeAll>;
 
 export type cartType = itemType & {
     count: number,
@@ -85,6 +88,8 @@ function Cart(state: CartState = initialState, action: CartAction): CartState {
                 }
             }
             return { ...state, cartList: state.cartList.map(item => { return { ...item, toggleOn: !isAllOn } }) }
+        case REMOVEALL:
+            return { ...state, cartList: [] }
         default:
             return state;
     }

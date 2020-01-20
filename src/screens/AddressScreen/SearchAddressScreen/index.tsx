@@ -3,13 +3,10 @@ import { View, Text } from 'react-native'
 import LeftArrowHeader from '../../../components/Header/LeftArrowHeader'
 import useNavigation from '../../../hooks/useNavigation'
 import Postcode from '../../../components/Postcode'
-import { NavigationScreenProp, NavigationState, } from 'react-navigation';
 
 interface NavigationParams {
     setBasicAddress: Function
 }
-
-type Navigation = NavigationScreenProp<NavigationState, NavigationParams>;
 
 
 const SearchAddressScreen = () => {
@@ -24,7 +21,7 @@ const SearchAddressScreen = () => {
                 jsOptions={{ animated: true }}
                 onSelected={(data: any) => {
                     try {
-                        navigation.state.params.setBasicAddress(data.address)
+                        navigation.state.params?.setBasicAddress(data.address)
                         navigation.goBack()
                     } catch (error) {
                         navigation.goBack()

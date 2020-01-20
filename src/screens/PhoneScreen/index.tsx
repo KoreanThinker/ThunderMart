@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { View, Text, TextInput, ToastAndroid } from 'react-native'
 import useNavigation from '../../hooks/useNavigation';
 import usePhone from '../../hooks/usePhone';
-import { color1, WIDTH, shadow } from '../../components/style';
+import { color1, WIDTH, shadow, titleFont, middleFont, cardHeight } from '../../components/style';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import sendSMS from '../../components/sendSMS';
 import LeftArrowHeader from '../../components/Header/LeftArrowHeader';
+import DefaultInput from '../../components/Input/DefaultInput';
 
 
 const PhoneScreen = () => {
@@ -89,53 +90,48 @@ const PhoneScreen = () => {
                     !send
                         ?
                         <>
-                            <Text style={{ fontSize: 16, fontWeight: 'bold' }}>휴대폰번호를 입력해주세요 (-없이 입력)</Text>
-                            <View style={{ width: WIDTH - 60, alignSelf: 'center', backgroundColor: 'white', height: 60, ...shadow, paddingHorizontal: 16, justifyContent: 'center', marginTop: 20 }}>
-                                <TextInput
-                                    placeholder={number ? number : '01012345678'}
-                                    style={{ fontSize: 16, fontWeight: 'bold' }}
-                                    maxLength={11}
-                                    keyboardType='number-pad'
-                                    value={phoneNum}
-                                    onChangeText={t => {
-                                        setPhoneNum(t.replace(/[^0-9]/g, ''))
-                                    }}
-                                />
-                            </View>
+                            <Text style={{ ...middleFont }}>휴대폰번호를 입력해주세요 (-없이 입력)</Text>
+                            <DefaultInput
+                                placeholder={number ? number : '01012345678'}
+                                value={phoneNum}
+                                onChangeText={t => {
+                                    setPhoneNum(t.replace(/[^0-9]/g, ''))
+                                }}
+                                maxLength={11}
+                            />
                             <TouchableWithoutFeedback
                                 onPress={onSubmit}
-                                style={{ opacity: phoneNum.length < 10 ? 0.5 : 1, width: WIDTH - 60, alignSelf: 'center', height: 60, backgroundColor: color1, borderRadius: 30, alignItems: 'center', justifyContent: 'center', marginTop: 20 }}
+                                style={{ opacity: phoneNum.length < 10 ? 0.5 : 1, width: WIDTH - 60, alignSelf: 'center', height: cardHeight, backgroundColor: color1, borderRadius: 30, alignItems: 'center', justifyContent: 'center', marginTop: 20 }}
                             >
-                                <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }} >인증번호 받기</Text>
+                                <Text style={{ ...titleFont, color: 'white' }} >인증번호 받기</Text>
                             </TouchableWithoutFeedback>
                         </>
                         :
                         <>
-                            <Text style={{ fontSize: 16, fontWeight: 'bold' }}>휴대폰번호를 입력해주세요</Text>
-                            <View style={{ width: WIDTH - 60, alignSelf: 'center', backgroundColor: 'white', height: 60, ...shadow, paddingHorizontal: 16, alignItems: 'center', marginTop: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
-                                <TextInput
+                            <Text style={{ ...middleFont }}>휴대폰번호를 입력해주세요</Text>
+
+                            <View style={{ width: WIDTH - 60, flexDirection: 'row', alignItems: 'center', paddingBottom: 10 }}>
+                                <DefaultInput
                                     placeholder='4자리를 입력해주세요'
-                                    style={{ fontSize: 16, fontWeight: 'bold' }}
-                                    maxLength={4}
-                                    keyboardType='number-pad'
                                     value={userVertifyNum}
                                     onChangeText={t => {
                                         setUserVertifyNum(t.replace(/[^0-9]/g, ''))
                                     }}
-
+                                    keyboardType='number-pad'
+                                    maxLength={4}
                                 />
-                                <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{Math.floor(time / 60)}:{time % 60 < 10 ? '0' + (time % 60).toString() : time % 60}</Text>
+                                <Text style={{ ...middleFont, position: 'absolute', right: 16 }}>{Math.floor(time / 60)}:{time % 60 < 10 ? '0' + (time % 60).toString() : time % 60}</Text>
                             </View>
                             <TouchableWithoutFeedback
                                 onPress={onComplete}
-                                style={{ opacity: vertifyNum === userVertifyNum ? 1 : 0.5, width: WIDTH - 60, alignSelf: 'center', height: 60, backgroundColor: color1, borderRadius: 30, alignItems: 'center', justifyContent: 'center', marginTop: 20 }}
+                                style={{ opacity: vertifyNum === userVertifyNum ? 1 : 0.5, width: WIDTH - 60, alignSelf: 'center', height: cardHeight, backgroundColor: color1, borderRadius: 30, alignItems: 'center', justifyContent: 'center', marginTop: 20 }}
                             >
-                                <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }} >완료</Text>
+                                <Text style={{ ...titleFont, color: 'white' }} >완료</Text>
                             </TouchableWithoutFeedback>
                             <TouchableWithoutFeedback
                                 onPress={onResend}
                             >
-                                <Text style={{ marginTop: 20, alignSelf: 'center', fontSize: 16, fontWeight: 'bold', opacity: 0.5, textDecorationLine: 'underline' }}>재전송</Text>
+                                <Text style={{ marginTop: 20, alignSelf: 'center', ...middleFont, opacity: 0.5, textDecorationLine: 'underline' }}>재전송</Text>
                             </TouchableWithoutFeedback>
 
                         </>

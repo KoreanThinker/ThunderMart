@@ -6,7 +6,7 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import useNavigation from '../../hooks/useNavigation'
 
 type LeftArrowHeaderProps = {
-    title: string,
+    title?: string,
     goBack: Function
 }
 
