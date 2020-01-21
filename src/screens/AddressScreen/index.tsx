@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View, Text, ScrollView, ToastAndroid } from 'react-native'
 import { shadow, defaultFont, WIDTH, cardHeight, borderBottom } from '../../components/style'
 import LeftArrowHeader from '../../components/Header/LeftArrowHeader'
@@ -6,17 +6,24 @@ import useNavigation from '../../hooks/useNavigation'
 import useAddress from '../../hooks/useAddress'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import useShop from '../../hooks/useShop'
 
 const AddressScreen = () => {
     const navigation = useNavigation()
 
     const { recentAddresses, onRemove, presentAddress, onChange } = useAddress()
+    const shop = useShop()
     console.log(recentAddresses);
     console.log(presentAddress);
+
+    useEffect(() => {
+        if (recentAddresses.length == 0) navigation.navigate('AppendAddressScreen')
+    }, [])
 
     const onChangeAddress = (id: number) => {
         onChange(id)
         navigation.navigate('MainBottomTab')
+        shop.onChange(null)
         ToastAndroid.show('배송지가 변경되었습니다', ToastAndroid.SHORT)
     }
 

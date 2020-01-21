@@ -10,7 +10,7 @@ export default function useAddress() {
     const dispatch = useDispatch();
 
     const onRemove = useCallback((id: number) => dispatch(remove(id)), [dispatch]);
-    const onAppend = useCallback((fullAddress: string, basicAddress: string) => dispatch(append(fullAddress, basicAddress)), [dispatch]);
+    const onAppend = useCallback((fullAddress: string, basicAddress: string, contractionAddress: string) => dispatch(append(fullAddress, basicAddress, contractionAddress)), [dispatch]);
     const onChange = useCallback((id: number) => dispatch(change(id)), [dispatch]);
 
     return {

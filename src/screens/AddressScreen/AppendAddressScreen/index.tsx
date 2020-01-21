@@ -6,6 +6,7 @@ import useNavigation from '../../../hooks/useNavigation'
 import useAddress from '../../../hooks/useAddress'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import DefaultInput from '../../../components/Input/DefaultInput'
+import useShop from '../../../hooks/useShop'
 const { BoxShadow } = require('react-native-shadow')
 
 
@@ -13,19 +14,24 @@ const { BoxShadow } = require('react-native-shadow')
 
 const AppendAddressScreen = () => {
     const navigation = useNavigation()
-    const { onAppend } = useAddress()
+    const { onAppend, recentAddresses } = useAddress()
+    const { onChange } = useShop()
 
     const [basicAddress, setBasicAddress] = useState('')
+    const [contractionAddress, setContractionAddress] = useState('')
     const [detailAddress, setDetailAddress] = useState('')
 
     const onSubmit = () => {
         if (basicAddress === '' || detailAddress === '') return;
-        onAppend(basicAddress + ' ' + detailAddress, basicAddress);
-        navigation.goBack()
+        const isFirst = recentAddresses.length === 0
+        onChange(null)
+        onAppend(basicAddress + ' ' + detailAddress, basicAddress, contractionAddress);
+        if (isFirst) navigation.navigate('MainBottomTab')
+        else navigation.goBack()
     }
 
     const onBasic = () => {
-        navigation.navigate('SearchAddressScreen', { setBasicAddress })
+        navigation.navigate('SearchAddressScreen', { setBasicAddress, setContractionAddress })
     }
 
     return (

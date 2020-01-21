@@ -19,7 +19,7 @@ const AddressHeader = () => {
             style={{ width: style.WIDTH, height: style.headerHeight, backgroundColor: style.color1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 50 }}
         >
             <Text style={{ ...style.titleFont, color: 'white' }} numberOfLines={1}>
-                {presentAddress !== null ? presentAddress?.fullAddress : '주소를 입력해주세요'}
+                {presentAddress !== null ? presentAddress?.contractionAddress : '주소를 입력해주세요'}
             </Text>
         </TouchableWithoutFeedback>
     )

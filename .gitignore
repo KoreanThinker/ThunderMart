@@ -64,4 +64,4 @@ buck-out/
 /ios/Pods/
 MISSION
 secret.json
-android/app/src/main/res/values/strings.xml
+test.ts

@@ -53,6 +53,7 @@ const CartScreen = () => {
                 style={{ flex: 1 }}
                 data={cartList}
                 overScrollMode='never'
+                showsVerticalScrollIndicator={false}
                 keyExtractor={(item) => item.id}
                 ListHeaderComponent={<>
                     <AddressBanner />

@@ -98,6 +98,7 @@ const PhoneScreen = () => {
                                     setPhoneNum(t.replace(/[^0-9]/g, ''))
                                 }}
                                 maxLength={11}
+                                keyboardType='number-pad'
                             />
                             <TouchableWithoutFeedback
                                 onPress={onSubmit}

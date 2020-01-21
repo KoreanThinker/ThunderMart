@@ -110,7 +110,7 @@ const CategoryGrid = () => {
         >
             <FastImage
                 style={{ width: '100%', height: BOXSIZE - 50 }}
-                source={{ uri: item.image }}
+                source={{ uri: item.image, priority: FastImage.priority.high }}
                 resizeMode={FastImage.resizeMode.contain}
             />
             <Text style={{ fontSize: 13, fontWeight: 'bold', marginTop: 6 }}>{item.name}</Text>

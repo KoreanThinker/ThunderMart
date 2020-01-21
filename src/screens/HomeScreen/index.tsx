@@ -20,6 +20,7 @@ const HomeScreen = () => {
             <AddressHeader />
             <CategoryGrid />
             <SearchBar />
+            <View style={{ height: 20 }} />
         </ScrollView>
     )
 }

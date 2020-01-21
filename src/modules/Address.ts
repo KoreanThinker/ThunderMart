@@ -4,7 +4,7 @@ const REMOVE = 'address/REMOVE' as const;
 const CHANGE = 'address/CHANGE' as const;
 
 //액션 생성 함수 선언
-export const append = (fullAddress: string, basicAddress: string) => ({ type: APPEND, fullAddress, basicAddress });
+export const append = (fullAddress: string, basicAddress: string, contractionAddress: string) => ({ type: APPEND, fullAddress, basicAddress, contractionAddress });
 export const remove = (id: number) => ({ type: REMOVE, id });
 export const change = (id: number) => ({ type: CHANGE, id });
 
@@ -17,6 +17,7 @@ type AddressAction =
 export type addressType = {
     fullAddress: string;
     basicAddress: string;
+    contractionAddress: string;
     id: number;
 }
 
@@ -30,6 +31,7 @@ const initialState: AddressState = {
     recentAddresses: [],
 };
 
+
 //리듀서
 function Address(state: AddressState = initialState, action: AddressAction): AddressState {
     switch (action.type) {
@@ -37,12 +39,13 @@ function Address(state: AddressState = initialState, action: AddressAction): Add
             return { ...state, presentAddress: state.presentAddress !== null && state.presentAddress?.id === action.id ? null : state.presentAddress, recentAddresses: state.recentAddresses.filter(val => val.id !== action.id) }
         case APPEND:
             const id = Math.max(...state.recentAddresses.map(val => val.id));
-            const newAddress = { fullAddress: action.fullAddress, basicAddress: action.basicAddress, id: id === -Infinity ? 0 : id + 1 }
+            const newAddress = { fullAddress: action.fullAddress, basicAddress: action.basicAddress, contractionAddress: action.contractionAddress, id: id === -Infinity ? 0 : id + 1 }
             return { ...state, recentAddresses: [newAddress, ...state.recentAddresses], presentAddress: newAddress }
         case CHANGE:
             let adr: addressType = {
                 fullAddress: '',
                 basicAddress: '',
+                contractionAddress: '',
                 id: 9999
             };
             for (let i = 0; i < state.recentAddresses.length; i++) {

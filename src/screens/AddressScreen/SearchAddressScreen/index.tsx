@@ -5,7 +5,8 @@ import useNavigation from '../../../hooks/useNavigation'
 import Postcode from '../../../components/Postcode'
 
 interface NavigationParams {
-    setBasicAddress: Function
+    setBasicAddress: Function,
+    setContractionAddress: Function,
 }
 
 
@@ -22,6 +23,7 @@ const SearchAddressScreen = () => {
                 onSelected={(data: any) => {
                     try {
                         navigation.state.params?.setBasicAddress(data.address)
+                        navigation.state.params?.setContractionAddress(data.bname !== '' ? data.bname : data.address)
                         navigation.goBack()
                     } catch (error) {
                         navigation.goBack()
