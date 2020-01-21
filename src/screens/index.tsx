@@ -4,7 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { color1, headerHeight } from '..//components/style';
 import Icon from 'react-native-vector-icons/AntDesign'
-import { fromLeft, fromRight, flipX, fadeIn } from 'react-navigation-transitions';
+import { fromLeft, fromRight, flipX, fadeIn, fromBottom, fromTop } from 'react-navigation-transitions';
 
 import HomeScreen, {
     CategoryDetailScreen
@@ -15,9 +15,8 @@ import OrderHistoryScreen from './OrderHistoryScreen';
 import MoreScreen from './MoreScreen';
 
 import SignInScreen, {
-    EmailPasswordResetScreen,
-    SignUpEmailAdditionInfoScreen,
-    SignUpPolicyScreen
+    SignUpPolicyScreen,
+    PolicyDetailScreen
 } from './SignInScreen';
 
 import AddressScreen, {
@@ -119,7 +118,7 @@ const MainBottomTab = createBottomTabNavigator(
                 backgroundColor: 'white',
                 height: headerHeight,
                 borderTopColor: '#dbdbdb',
-                borderTopWidth: 0.5
+                borderTopWidth: 0.5,
             }
         },
     }
@@ -128,15 +127,15 @@ const MainBottomTab = createBottomTabNavigator(
 const SignStack = createStackNavigator(
     {
         SignInScreen,
-        SignUpEmailAdditionInfoScreen,
         SignUpPolicyScreen,
-        EmailPasswordResetScreen
+        PolicyDetailScreen
     },
     {
         initialRouteName: 'SignInScreen',
         defaultNavigationOptions: {
             headerShown: false
         },
+        transitionConfig: () => fromRight()
     }
 )
 
@@ -191,7 +190,7 @@ const MainStack = createStackNavigator(
         ItemSearchStack,
     },
     {
-        initialRouteName: 'MainBottomTab',
+        initialRouteName: 'SignStack',
         defaultNavigationOptions: {
             headerShown: false
         },

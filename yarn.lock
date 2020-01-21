@@ -968,6 +968,13 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.5.tgz#25421be6cd943a4b1660b62cfbcd45be8891462c"
   integrity sha512-Lj1DzfCmW0f4HnmHtEuX8Yy2f7cnUA8r5KGGUuDDGtQt1so6QJkKeUmsnLo2zYDtsF8due6hvIL06Vdo5xxuLQ==
 
+"@react-native-seoul/kakao-login@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@react-native-seoul/kakao-login/-/kakao-login-2.3.0.tgz#97820a4446de968dd1a59057a73837e1b7aa44b5"
+  integrity sha512-YjuNyVXv7F2oJmMxdeo0YTxyoPrz+DmWGFOHCxKH+yF8cm5QGl1YsJwYS3hNCiwQTz/VvqXRzVxpPRpA3ySOoA==
+  dependencies:
+    dooboolab-welcome "^1.1.0"
+
 "@react-navigation/core@^3.5.1":
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-3.5.1.tgz#7a2339fca3496979305fb3a8ab88c2ca8d8c214d"
@@ -2413,6 +2420,11 @@ domutils@^1.7.0:
   dependencies:
     dom-serializer "0"
     domelementtype "1"
+
+dooboolab-welcome@^1.1.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/dooboolab-welcome/-/dooboolab-welcome-1.1.1.tgz#ca2184f6e1f568865d707a6ce3bda7e003550f54"
+  integrity sha512-tQ/9NBCGnalHwKOBjDqTD4t4wQpDfSSbxQGctzkzaLHR3AhN0wCBkIs05JciVtvl/jfLZ+DgAndktAMk3Bu7Vw==
 
 ecc-jsbn@~0.1.1:
   version "0.1.2"
@@ -5706,6 +5718,11 @@ react-native-gesture-handler@^1.5.3:
     hoist-non-react-statics "^2.3.1"
     invariant "^2.2.4"
     prop-types "^15.7.2"
+
+react-native-linear-gradient@^2.5.6:
+  version "2.5.6"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.6.tgz#96215cbc5ec7a01247a20890888aa75b834d44a0"
+  integrity sha512-HDwEaXcQIuXXCV70O+bK1rizFong3wj+5Q/jSyifKFLg0VWF95xh8XQgfzXwtq0NggL9vNjPKXa016KuFu+VFg==
 
 react-native-modal@^11.5.3:
   version "11.5.3"

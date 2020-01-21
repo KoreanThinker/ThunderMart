@@ -1,28 +1,70 @@
-import React, { useEffect } from 'react'
-import { View, Text, Image } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { View, Text, Image, ToastAndroid } from 'react-native'
 import { alignCenter, defaultFont } from '../../components/style'
 import ShadowBorderViewEmpty from '../../components/View/ShadowBorderViewEmpty'
 import useNavigation from '../../hooks/useNavigation'
 import { reset2HomeAndAddress } from '../../components/navigationResetActions'
+import KakaoLogins from '@react-native-seoul/kakao-login';
+import SplashScreen from 'react-native-splash-screen'
+import { toastMessage } from '../../components/functions'
 
+const TOKEN_EMPTY = 'token has not fetched';
+const PROFILE_EMPTY = {
+    id: 'profile has not fetched',
+    email: 'profile has not fetched',
+    profile_image_url: '',
+};
 
 const SignInScreen = () => {
     const navigation = useNavigation()
 
-    useEffect(() => {
+    const [SignInLoading, setSignInLoading] = useState(false);
 
-    }, [])
+    const [token, setToken] = useState(TOKEN_EMPTY);
+    const [profile, setProfile] = useState(PROFILE_EMPTY);
+
 
     const onKakao = () => {
+        if (SignInLoading) return;
         navigation.navigate('SignUpPolicyScreen', { signIn: kakaoSignIn })
     }
     const onFacebook = () => {
-        navigation.dispatch(reset2HomeAndAddress)
+        if (SignInLoading) return;
+        navigation.navigate('SignUpPolicyScreen', { signIn: FacebookSignIn })
     }
 
     const kakaoSignIn = () => {
-        console.log(11)
+        setSignInLoading(true)
+
+        KakaoLogins.login()
+            .then(result => {
+                setToken(result.accessToken);
+                console.log(`Login Finished:${JSON.stringify(result)}`)
+                setSignInLoading(false)
+                SignInSuccess('kakao', result.accessToken)
+            })
+            .catch(err => {
+                if (err.code === 'E_CANCELLED_OPERATION') {
+                    console.log(`Login Cancelled:${err.message}`)
+                } else {
+                    console.log(`Login Failed:${err.code} ${err.message}`)
+                    toastMessage('다시 시도해 주세요')
+                }
+                setSignInLoading(false)
+            });
     }
+
+    const FacebookSignIn = () => {
+
+    }
+
+    const SignInSuccess = (type: string, token: string) => {
+        navigation.dispatch(reset2HomeAndAddress)
+    }
+
+    setTimeout(() => {
+        SplashScreen.hide()
+    }, 500);
 
     return (
         <View style={{ flex: 1, alignItems: 'center', paddingBottom: 56 }}>

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">썬더마트</string>
     <string moduleConfig="true" name="CodePushDeploymentKey">4dCQ3wuMHZg1-tA8XRGTa5SMnTQYjUhurBPbM</string>
+    <string name="kakao_app_key">85ebe86294faadda807869062cfeed22</string>
 </resources>
