@@ -34,6 +34,7 @@ const SignUpPolicyScreen = () => {
     const [check, setCheck] = useState(data.map(() => false))
 
     const onSubmit = () => {
+        if ((check.indexOf(false) !== -1)) return
         navigation.state.params?.signIn()
         navigation.goBack()
     }

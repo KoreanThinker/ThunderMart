@@ -7,6 +7,8 @@ import { reset2HomeAndAddress } from '../../components/navigationResetActions'
 import KakaoLogins from '@react-native-seoul/kakao-login';
 import SplashScreen from 'react-native-splash-screen'
 import { toastMessage } from '../../components/functions'
+import { LoginManager, AccessToken } from 'react-native-fbsdk';
+import { signInType } from '../../components/types'
 
 const TOKEN_EMPTY = 'token has not fetched';
 const PROFILE_EMPTY = {
@@ -48,19 +50,53 @@ const SignInScreen = () => {
                     console.log(`Login Cancelled:${err.message}`)
                 } else {
                     console.log(`Login Failed:${err.code} ${err.message}`)
-                    toastMessage('다시 시도해 주세요')
+                    errorSoluction()
                 }
                 setSignInLoading(false)
             });
     }
 
     const FacebookSignIn = () => {
+        setSignInLoading(true)
+        console.log('start')
+        LoginManager.logInWithPermissions(["public_profile"]).then(
+            function (result) {
+                if (result.isCancelled) {
+                    setSignInLoading(false)
+                    console.log("Login cancelled");
+                    AccessToken.getCurrentAccessToken().then(data => {
+                        console.log(data)
+                    })
+                } else {
+                    AccessToken.getCurrentAccessToken()
+                        .then((data) => {
+                            if (data === null) return;
+                            SignInSuccess('facebook', data.accessToken.toString())
+                        })
+                        .catch((error) => {
+                            errorSoluction()
+                            console.log("토큰에러: " + error);
+                        })
 
+                }
+            },
+            function (error) {
+                errorSoluction()
+                console.log("Login fail with error: " + error);
+            }
+        );
     }
 
-    const SignInSuccess = (type: string, token: string) => {
+    const SignInSuccess = (type: signInType, token: string) => {
+        console.log('로그인 : ' + type + ' : ' + token)
         navigation.dispatch(reset2HomeAndAddress)
     }
+
+    const errorSoluction = () => {
+        toastMessage('다시 시도해 주세요')
+        setSignInLoading(false)
+    }
+
 
     setTimeout(() => {
         SplashScreen.hide()

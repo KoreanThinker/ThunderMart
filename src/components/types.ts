@@ -6,3 +6,5 @@ export type itemType = {
 }
 
 export type shopNameType = 'GS' | 'CU' | 'SEVEN' | 'ELSE'
+
+export type signInType = 'facebook' | 'kakao'

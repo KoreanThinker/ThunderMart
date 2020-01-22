@@ -2,4 +2,5 @@
     <string name="app_name">썬더마트</string>
     <string moduleConfig="true" name="CodePushDeploymentKey">4dCQ3wuMHZg1-tA8XRGTa5SMnTQYjUhurBPbM</string>
     <string name="kakao_app_key">85ebe86294faadda807869062cfeed22</string>
+    <string name="facebook_app_id">848277605642683</string>
 </resources>
