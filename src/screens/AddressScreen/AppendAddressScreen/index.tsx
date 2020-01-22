@@ -23,11 +23,9 @@ const AppendAddressScreen = () => {
 
     const onSubmit = () => {
         if (basicAddress === '' || detailAddress === '') return;
-        const isFirst = recentAddresses.length === 0
         onChange(null)
         onAppend(basicAddress + ' ' + detailAddress, basicAddress, contractionAddress);
-        if (isFirst) navigation.navigate('MainBottomTab')
-        else navigation.goBack()
+        navigation.navigate('MainBottomTab')
     }
 
     const onBasic = () => {
