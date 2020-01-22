@@ -41,13 +41,13 @@ const CartItem: React.FunctionComponent<CartItemProps> = ({ item }) => {
                 </View>
             </View>
 
-            <View style={{ height: '100%', width: 110, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
-                <TouchableWithoutFeedback onPress={() => onMinus(item.id)}>
-                    <Icon name='minuscircleo' size={18} />
+            <View style={{ height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
+                <TouchableWithoutFeedback onPress={() => onMinus(item.id)} style={{ height: '100%', justifyContent: 'center' }}>
+                    <Icon name='minuscircleo' size={18} style={{ marginLeft: 20 }} />
                 </TouchableWithoutFeedback>
-                <Text style={{ fontSize: 16, fontWeight: 'bold', marginHorizontal: 6 }}>{item.count}</Text>
-                <TouchableWithoutFeedback onPress={() => onPlus(item.id)}>
-                    <Icon name='pluscircleo' size={18} />
+                <Text style={{ fontSize: 16, fontWeight: 'bold', marginHorizontal: 8 }}>{item.count}</Text>
+                <TouchableWithoutFeedback onPress={() => onPlus(item.id)} style={{ height: '100%', justifyContent: 'center' }}>
+                    <Icon name='pluscircleo' size={18} style={{ marginRight: 20 }} />
                 </TouchableWithoutFeedback>
             </View>
         </View>
