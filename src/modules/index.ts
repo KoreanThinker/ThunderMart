@@ -17,11 +17,11 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-    Address: persistReducer(persistConfig, Address),
-    Phone: persistReducer(persistConfig, Phone),
-    Shop: persistReducer(persistConfig, Shop),
-    itemSearch: persistReducer(persistConfig, ItemSearch),
-    Cart,
+    Shop: persistReducer({ key: 'Shop', storage: AsyncStorage }, Shop),
+    Address: persistReducer({ key: 'Address', storage: AsyncStorage }, Address),
+    Phone: persistReducer({ key: 'Phone', storage: AsyncStorage }, Phone),
+    ItemSearch: persistReducer({ key: 'ItemSearch', storage: AsyncStorage }, ItemSearch),
+    Cart
 })
 
 

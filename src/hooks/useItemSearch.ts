@@ -4,7 +4,7 @@ import { useCallback } from 'react';
 import { remove, append, removeAll } from '../modules/ItemSearch';
 
 export default function useItemSearch() {
-    const searchHistorys = useSelector((state: RootState) => state.itemSearch.searchHistorys);
+    const searchHistorys = useSelector((state: RootState) => state.ItemSearch.searchHistorys);
 
     const dispatch = useDispatch();
 
