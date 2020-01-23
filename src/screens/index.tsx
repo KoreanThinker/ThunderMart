@@ -190,7 +190,7 @@ const MainStack = createStackNavigator(
         ItemSearchStack,
     },
     {
-        initialRouteName: 'SignStack',
+        initialRouteName: 'MainBottomTab',
         defaultNavigationOptions: {
             headerShown: false
         },

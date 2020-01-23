@@ -8,16 +8,23 @@ import CategoryGrid from './CategoryGrid';
 import { ScrollView } from 'react-native-gesture-handler';
 import SplashScreen from 'react-native-splash-screen';
 import { reset2SignIn } from '../../components/navigationResetActions';
+import useAuth from '../../hooks/useAuth'
 const { BoxShadow } = require('react-native-shadow')
 
 const HomeScreen = () => {
     const navigation = useNavigation()
+    const { type } = useAuth()
+
     useEffect(() => {
+        //로그인체크
+        if (type == null) {
+            navigation.dispatch(reset2SignIn)
+            return;
+        }
         setTimeout(() => {
             SplashScreen.hide()
         }, 500);
-        // navigation.dispatch(reset2SignIn)
-        // navigation.navigate('SignStack')
+
     }, [])
 
     return (

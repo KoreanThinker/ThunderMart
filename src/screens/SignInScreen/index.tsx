@@ -9,6 +9,7 @@ import SplashScreen from 'react-native-splash-screen'
 import { toastMessage } from '../../components/functions'
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import { signInType } from '../../components/types'
+import useAuth from '../../hooks/useAuth'
 
 const TOKEN_EMPTY = 'token has not fetched';
 const PROFILE_EMPTY = {
@@ -19,11 +20,17 @@ const PROFILE_EMPTY = {
 
 const SignInScreen = () => {
     const navigation = useNavigation()
+    const { onSignIn } = useAuth()
 
     const [SignInLoading, setSignInLoading] = useState(false);
 
     const [token, setToken] = useState(TOKEN_EMPTY);
-    const [profile, setProfile] = useState(PROFILE_EMPTY);
+
+    useEffect(() => {
+        setTimeout(() => {
+            SplashScreen.hide()
+        }, 500);
+    }, [])
 
 
     const onKakao = () => {
@@ -89,6 +96,7 @@ const SignInScreen = () => {
 
     const SignInSuccess = (type: signInType, token: string) => {
         console.log('로그인 : ' + type + ' : ' + token)
+        onSignIn(type, token)
         navigation.dispatch(reset2HomeAndAddress)
     }
 
@@ -97,10 +105,6 @@ const SignInScreen = () => {
         setSignInLoading(false)
     }
 
-
-    setTimeout(() => {
-        SplashScreen.hide()
-    }, 500);
 
     return (
         <View style={{ flex: 1, alignItems: 'center', paddingBottom: 56 }}>

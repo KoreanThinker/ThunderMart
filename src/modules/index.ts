@@ -7,20 +7,18 @@ import Cart from './Cart';
 import Phone from './Phone';
 import Shop from './Shop';
 import ItemSearch from './ItemSearch'
+import Auth from './Auth'
+
 
 export type RootState = ReturnType<typeof rootReducer>;
 
-
-const persistConfig = {
-    key: 'root',
-    storage: AsyncStorage,
-};
 
 const rootReducer = combineReducers({
     Shop: persistReducer({ key: 'Shop', storage: AsyncStorage }, Shop),
     Address: persistReducer({ key: 'Address', storage: AsyncStorage }, Address),
     Phone: persistReducer({ key: 'Phone', storage: AsyncStorage }, Phone),
     ItemSearch: persistReducer({ key: 'ItemSearch', storage: AsyncStorage }, ItemSearch),
+    Auth: persistReducer({ key: 'Auth', storage: AsyncStorage }, Auth),
     Cart
 })
 

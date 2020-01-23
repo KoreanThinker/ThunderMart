@@ -4,7 +4,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 import configureStore from './src/modules';
 import AppContainer from './src/screens';
 import codePush, { CodePushOptions } from "react-native-code-push";
-import SplashScreen from 'react-native-splash-screen'
 
 const { store, persistor } = configureStore();
 
@@ -12,11 +11,6 @@ let codePushOptions: CodePushOptions = { checkFrequency: codePush.CheckFrequency
 
 const App = () => {
 
-  useEffect(() => {
-    setTimeout(() => {
-      SplashScreen.hide()
-    }, 500);
-  }, [])
 
   return (
     <>
