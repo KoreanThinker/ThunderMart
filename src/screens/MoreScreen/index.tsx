@@ -3,6 +3,8 @@ import { View, Text, ScrollView } from 'react-native'
 import { color1, shadow, headerHeight, titleFont, defaultFont, borderBottom, cardHeight, middleFont } from '../../components/style'
 import useNavigation from '../../hooks/useNavigation'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
+import useAuth from '../../hooks/useAuth'
+import { reset2SignIn } from '../../components/navigationResetActions'
 
 const userName = '홍길동'
 
@@ -10,6 +12,7 @@ const userName = '홍길동'
 
 const MoreScreen = () => {
     const navigation = useNavigation()
+    const { onSignOut } = useAuth()
 
     const menuList = [
         {
@@ -34,7 +37,10 @@ const MoreScreen = () => {
         },
         {
             name: '로그아웃',
-            onClick: () => { }
+            onClick: () => {
+                onSignOut()
+                navigation.dispatch(reset2SignIn)
+            }
         },
     ]
 

@@ -1,5 +1,8 @@
 import { shopNameType } from "./types";
 import { ToastAndroid } from "react-native";
+import useAuth from "../hooks/useAuth";
+import useNavigation from "../hooks/useNavigation";
+import { reset2SignIn } from "./navigationResetActions";
 
 export function formatMoney(num: number): string {
     let result = ''
@@ -30,4 +33,12 @@ export function shopType2Logo(type: shopNameType): string {
 
 export function toastMessage(text: string): void {
     ToastAndroid.show(text, ToastAndroid.SHORT);
+}
+
+//예시용 함수 사용하면 안됨 복사해서 DOM안에다가 써야함
+function signOut(): void {
+    const { onSignOut } = useAuth()
+    const navigation = useNavigation()
+    onSignOut()
+    navigation.dispatch(reset2SignIn)
 }
