@@ -108,10 +108,11 @@ const CategoryGrid = () => {
             onPress={() => onCategory(item.key)}
             style={{ padding: 10, alignItems: 'center', justifyContent: 'center', width: BOXSIZE, height: BOXSIZE }}
         >
-            <FastImage
+            <Image
                 style={{ width: '100%', height: BOXSIZE - 50 }}
-                source={{ uri: item.image, priority: FastImage.priority.high }}
-                resizeMode={FastImage.resizeMode.contain}
+                source={{ uri: item.image }}
+                resizeMode='contain'
+            // resizeMode={FastImage.resizeMode.contain}
             />
             <Text style={{ fontSize: 13, fontWeight: 'bold', marginTop: 6 }}>{item.name}</Text>
         </TouchableWithoutFeedback>
@@ -129,10 +130,11 @@ const CategoryGrid = () => {
                             <>
                                 <View style={{ width: WIDTH - 30, alignSelf: 'center', height: 56, borderRadius: 16, alignItems: 'center', justifyContent: 'center' }}>
                                     <View style={{}}>
-                                        <FastImage
+                                        <Image
                                             style={{ height: 24, width: 70 }}
                                             source={{ uri: shopType2Logo(shopType) }}
-                                            resizeMode={FastImage.resizeMode.contain}
+                                            resizeMode='contain'
+                                        // resizeMode={FastImage.resizeMode.contain}
                                         />
                                     </View>
                                     <View style={{ position: 'absolute', right: 0, width: 80, ...alignCenter }}>
@@ -173,10 +175,11 @@ const CategoryGrid = () => {
                                                     <TouchableWithoutFeedback
                                                         onPress={() => onShopPress(item)}
                                                     >
-                                                        <FastImage
+                                                        <Image
                                                             style={{ height: 30, width: 50 }}
                                                             source={{ uri: shopType2Logo(item) }}
-                                                            resizeMode={FastImage.resizeMode.contain}
+                                                            resizeMode='contain'
+                                                        // resizeMode={FastImage.resizeMode.contain}
                                                         />
                                                     </TouchableWithoutFeedback>
                                                 </View>
@@ -201,8 +204,8 @@ const CategoryGrid = () => {
                                 <View style={{ height: 130, alignSelf: 'center', ...alignCenter, marginBottom: 10 }}>
                                     <Image
                                         style={{ height: 120, width: 120 }}
-                                        // resizeMode={FastImage.resizeMode.contain}
                                         source={require('../../asset/IconClear.png')}
+                                        resizeMode='contain'
                                     />
                                 </View>
                             </TouchableWithoutFeedback>
