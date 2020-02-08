@@ -11,6 +11,8 @@ import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import { signInType } from '../../components/types'
 import useAuth from '../../hooks/useAuth'
 
+var secret = require('../../../secret.json')
+
 const TOKEN_EMPTY = 'token has not fetched';
 const PROFILE_EMPTY = {
     id: 'profile has not fetched',
@@ -94,10 +96,22 @@ const SignInScreen = () => {
         );
     }
 
-    const SignInSuccess = (type: signInType, token: string) => {
+    const SignInSuccess = async (type: signInType, token: string) => {
         console.log('로그인 : ' + type + ' : ' + token)
-        onSignIn(type, token)
-        navigation.dispatch(reset2HomeAndAddress)
+        try {
+            const getLogin = await fetch(`${secret.endPoint}/user/login?user_token=${token}&provider=${type.toUpperCase()}`, {
+                method: 'POST'
+            })
+            const res = await getLogin.json()
+            if (res.res_code === 0) {
+                onSignIn(type, token, res.session_id)
+                navigation.dispatch(reset2HomeAndAddress)
+            } else {
+                errorSoluction()
+            }
+        } catch (error) {
+            errorSoluction()
+        }
     }
 
     const errorSoluction = () => {
