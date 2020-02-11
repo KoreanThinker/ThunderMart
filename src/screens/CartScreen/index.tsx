@@ -13,6 +13,7 @@ import CartItem from './CartItem'
 import AddressBanner from './AddressBanner';
 import RemoveManager from './RemoveManager';
 import ShadowBorderView from '../../components/View/ShadowBorderView';
+import { formatPhone } from '../../components/functions';
 
 
 
@@ -72,7 +73,7 @@ const CartScreen = () => {
                         {/* 연락처 */}
                         <ShadowBorderView
                             onPress={() => onPhoneSellect()}
-                            value={number ? number : '연락처'}
+                            value={number ? formatPhone(number) : '연락처'}
                             marginTop={20}
                         />
                         {/* 주문하기 */}

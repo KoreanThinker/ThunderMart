@@ -48,3 +48,23 @@ const koreanDay = ['일', '월', '화', '수', '목', '금', '토']
 export function number2koreanDay(number: number): string {
     return koreanDay[number]
 }
+
+export function formatPhone(num: string) {
+
+    let formatNum = '';
+
+    if (num.length == 11) {
+        formatNum = num.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+
+    } else if (num.length == 8) {
+        formatNum = num.replace(/(\d{4})(\d{4})/, '$1-$2');
+    } else {
+        if (num.indexOf('02') == 0) {
+            formatNum = num.replace(/(\d{2})(\d{4})(\d{4})/, '$1-$2-$3');
+        } else {
+            formatNum = num.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
+        }
+    }
+
+    return formatNum;
+}

@@ -11,7 +11,9 @@ import HomeScreen, {
 } from './HomeScreen';
 
 import CartScreen from './CartScreen'
-import OrderHistoryScreen from './OrderHistoryScreen';
+import OrderHistoryScreen, {
+    OrderHistoryDetailScreen
+} from './OrderHistoryScreen';
 import MoreScreen from './MoreScreen';
 
 import SignInScreen, {
@@ -188,6 +190,7 @@ const MainStack = createStackNavigator(
         AddressStack,
         PhoneStack,
         ItemSearchStack,
+        OrderHistoryDetailScreen
     },
     {
         initialRouteName: 'MainBottomTab',

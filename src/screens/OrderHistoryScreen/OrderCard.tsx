@@ -14,7 +14,7 @@ const OrderCard: React.FC<orderHistory> = (props) => {
     const dateFormat = `${newDate.getMonth() + 1}/${newDate.getDate()} (${number2koreanDay(newDate.getDay())})`
 
     const onOrderDetail = () => {
-        navigation.navigate('OrderDetailScreen')
+        navigation.navigate('OrderHistoryDetailScreen', { orderId: props.orderId })
     }
 
 
@@ -22,7 +22,7 @@ const OrderCard: React.FC<orderHistory> = (props) => {
         <View style={{ width: '100%', marginTop: 24, paddingHorizontal: 20 }}>
             <View style={{ flexDirection: 'row', alignItems: 'flex-end' }} >
                 <ShopIcon height={24} width={42} shop={props.shop} resizeMode='contain' />
-                <Text style={{ fontSize: 12, color: 'rgba(0, 0, 0, 0.5)', marginLeft: 8 }} >{dateFormat}</Text>
+                <Text style={{ fontSize: 12, color: 'rgba(0, 0, 0, 0.5)', marginLeft: 8, fontWeight: 'bold' }} >{dateFormat}</Text>
             </View>
             <Text style={{ ...defaultFont, marginTop: 8 }} >{props.title} {formatMoney(props.total_price)}원</Text>
             {props.order_state != '배송 완료' &&

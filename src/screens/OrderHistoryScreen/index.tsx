@@ -83,3 +83,4 @@ const OrderHistoryScreen = () => {
 }
 
 export default OrderHistoryScreen
+export { default as OrderHistoryDetailScreen } from './OrderHistoryDetailScreen'
