@@ -42,3 +42,9 @@ function signOut(): void {
     onSignOut()
     navigation.dispatch(reset2SignIn)
 }
+
+const koreanDay = ['일', '월', '화', '수', '목', '금', '토']
+
+export function number2koreanDay(number: number): string {
+    return koreanDay[number]
+}
