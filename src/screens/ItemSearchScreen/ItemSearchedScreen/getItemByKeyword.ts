@@ -1,12 +1,12 @@
 import { shopNameType, itemType } from './../../../components/types';
 const secret = require('../../../../secret.json')
 
-export default async function (shop: shopNameType, category: number): Promise<itemType[]> {
+export default async function (shop: shopNameType, keyword: string): Promise<itemType[]> {
     try {
-        const getItem = await fetch(`${secret.endPoint}/items/list?shop=${shop}&category=${category}`, {
+        const getLogin = await fetch(`${secret.endPoint}/items/list?shop=${shop}&keyword=${keyword}`, {
             method: 'GET'
         })
-        const res = await getItem.json()
+        const res = await getLogin.json()
         if (res.res_code === 0) {
             return res.item_list as itemType[]
         } else {
