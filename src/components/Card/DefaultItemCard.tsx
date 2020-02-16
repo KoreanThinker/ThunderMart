@@ -42,7 +42,7 @@ const DefaultItemCard: React.FunctionComponent<DefaultItemCardProps> = ({ item }
             <View style={{ flex: 1, paddingLeft: 20, flexDirection: 'row', alignItems: 'center' }}>
                 <FastImage
                     style={{ width: 50, height: 50 }}
-                    source={{ uri: item.image }}
+                    source={{ uri: item.image_url }}
                     resizeMode={FastImage.resizeMode.contain}
                 />
                 <View style={{ flex: 1, paddingLeft: 12, justifyContent: 'center' }}>

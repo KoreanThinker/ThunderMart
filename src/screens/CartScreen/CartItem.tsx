@@ -32,7 +32,7 @@ const CartItem: React.FunctionComponent<CartItemProps> = ({ item }) => {
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                 <FastImage
                     style={{ width: 50, height: 50 }}
-                    source={{ uri: item.image }}
+                    source={{ uri: item.image_url }}
                     resizeMode={FastImage.resizeMode.contain}
                 />
                 <View style={{ flex: 1, paddingLeft: 12, justifyContent: 'center' }}>

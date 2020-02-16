@@ -1,8 +1,9 @@
 export type itemType = {
     id: string,
     name: string,
-    image: string,
-    price: number
+    image_url: string,
+    price: number,
+    category: number
 }
 
 export type shopNameType = 'GS' | 'CU' | 'SEVEN' | 'ELSE'
