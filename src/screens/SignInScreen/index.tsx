@@ -99,7 +99,7 @@ const SignInScreen = () => {
     const SignInSuccess = async (type: signInType, token: string) => {
         console.log('로그인 : ' + type + ' : ' + token)
         try {
-            const getLogin = await fetch(`${secret.endPoint}/user/login?user_token=${token}&provider=${type.toUpperCase()}`, {
+            const getLogin = await fetch(`${secret.endPoint}/users/login?user_token=${token}&provider=${type.toUpperCase()}`, {
                 method: 'POST'
             })
             const res = await getLogin.json()
