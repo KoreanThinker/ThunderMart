@@ -15,13 +15,19 @@ const HomeScreen = () => {
     const navigation = useNavigation()
     const { type } = useAuth()
 
-    useEffect(() => {
-        //로그인체크
+    const checkAndLogout = (): boolean => {
         if (type == null) {
             navigation.dispatch(reset2SignIn)
-            return;
+            return true;
         }
+        return false
+    }
+
+    useEffect(() => {
+        //로그인체크
+        if (checkAndLogout()) return
         setTimeout(() => {
+            if (checkAndLogout()) return
             SplashScreen.hide()
         }, 500);
 
