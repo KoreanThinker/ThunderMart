@@ -42,4 +42,5 @@ NCP사용
 > keytool -genkey -v -keystore [key-name].keystore -alias [key alias] -keyalg RSA -keysize 2048 -validity 10000
 
 # 키해시 참고
+- https://github.com/facebook/react-native-fbsdk/issues/424#issuecomment-469047955 이거나 아래꺼 둘중에 하나만
 - https://right-hot.tistory.com/entry/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%ED%82%A4%ED%95%B4%EC%8B%9C-%EC%96%BB%EB%8A%94-%EB%B0%A9%EB%B2%95-debug-keyhash-release-keyhash-googlePlay-keyhash
