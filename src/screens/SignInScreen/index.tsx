@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, Image, ToastAndroid } from 'react-native'
+import { View, Text, Image, ToastAndroid, Alert } from 'react-native'
 import { alignCenter, defaultFont } from '../../components/style'
 import ShadowBorderViewEmpty from '../../components/View/ShadowBorderViewEmpty'
 import useNavigation from '../../hooks/useNavigation'
@@ -59,8 +59,9 @@ const SignInScreen = () => {
                     console.log(`Login Cancelled:${err.message}`)
                 } else {
                     console.log(`Login Failed:${err.code} ${err.message}`)
-                    errorSoluction()
+                    // errorSoluction()
                 }
+                Alert.alert('카톡로그인실패' + err.message)
                 setSignInLoading(false)
             });
     }
@@ -83,36 +84,45 @@ const SignInScreen = () => {
                             SignInSuccess('facebook', data.accessToken.toString())
                         })
                         .catch((error) => {
-                            errorSoluction()
+                            // errorSoluction()
                             console.log("토큰에러: " + error);
+                            Alert.alert('페이스북 토큰' + error.toString())
                         })
 
                 }
             },
             function (error) {
-                errorSoluction()
+                // errorSoluction()
+                Alert.alert('페이스북 로그인실패' + error.toString())
                 console.log("Login fail with error: " + error);
             }
         );
     }
 
     const SignInSuccess = async (type: signInType, token: string) => {
-        // console.log('로그인 : ' + type + ' : ' + token)
-        try {
-            const getLogin = await fetch(`${secret.endPoint}/users/login?user_token=${token}&provider=${type.toUpperCase()}`, {
-                method: 'POST'
-            })
-            const res = await getLogin.json()
-            if (res.res_code === 0) {
-                onSignIn(type, token, res.session_id)
-                navigation.dispatch(reset2HomeAndAddress)
-            } else {
-                errorSoluction()
-            }
-        } catch (error) {
-            console.log(error)
+        console.log('로그인 : ' + type + ' : ' + token)
+        console.log(secret.endPoint)
+        Alert.alert('1' + secret.endPoint)
+        // try {
+        const getLogin = await fetch(`${secret.endPoint}/users/login?user_token=${token}&provider=${type.toUpperCase()}`, {
+            method: 'POST'
+        })
+        const res = await getLogin.json()
+        Alert.alert('2' + secret.endPoint + res.toString())
+        console.log(res)
+        if (res.res_code === 0) {
+            onSignIn(type, token, res.session_id)
+            navigation.dispatch(reset2HomeAndAddress)
+        } else {
+            Alert.alert(secret.endPoint + res.toString())
+            Alert.alert('3' + secret.endPoint)
             errorSoluction()
         }
+        // } catch (error) {
+        //     console.log(error)
+
+        // errorSoluction()
+        // }
     }
 
     const errorSoluction = () => {
@@ -152,6 +162,7 @@ const SignInScreen = () => {
                 />
                 <Text style={{ ...defaultFont }} >페이스북으로 시작하기</Text>
             </ShadowBorderViewEmpty>
+            <Text style={{ position: 'absolute', bottom: 20, fontSize: 10, color: '#888' }} >dev-0.4</Text>
         </View>
     )
 }

@@ -32,8 +32,11 @@ import ItemSearchScreen, {
     ItemSearchedScreen,
 } from './ItemSearchScreen'
 
+import OrderScreen, {
+    OrderResultScreen
+} from './OrderScreen'
 
-
+import OrderOptionScreen from './OrderOptionScreen'
 
 const HomeStack = createStackNavigator(
     {
@@ -190,7 +193,10 @@ const MainStack = createStackNavigator(
         AddressStack,
         PhoneStack,
         ItemSearchStack,
-        OrderHistoryDetailScreen
+        OrderHistoryDetailScreen,
+        OrderScreen,
+        OrderResultScreen,
+        OrderOptionScreen,
     },
     {
         initialRouteName: 'MainBottomTab',

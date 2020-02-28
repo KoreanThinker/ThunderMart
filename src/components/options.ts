@@ -1,6 +1,8 @@
-export const maxCartNum = 20
+export const maxCartNum = 5
 
-export const deliveryCharge = 3000
+export const maxCart = 5
+
+export const deliveryCharge = 3500
 
 export const minPrice = 10000
 

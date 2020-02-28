@@ -1,6 +1,7 @@
 import { itemType } from '../components/types'
-import { maxCartNum } from '../components/options'
+import { maxCartNum, maxCart } from '../components/options'
 import { ToastAndroid, Platform } from 'react-native'
+import { toastMessage } from '../components/functions';
 
 //액션 type 선언
 const APPEND = 'cart/APPEND' as const;
@@ -57,6 +58,10 @@ function Cart(state: CartState = initialState, action: CartAction): CartState {
                     if (Platform.OS === 'android') ToastAndroid.show('이미 있는 상품입니다', ToastAndroid.SHORT)
                     return state
                 }
+            }
+            if (state.cartList.length == maxCart) {
+                toastMessage(`최대 ${maxCart}종류까지 고를 수 있습니다.`)
+                return state
             }
             return { ...state, cartList: [{ ...action.itemInfo, count: 1, toggleOn: false }, ...state.cartList] }
         case REMOVE:

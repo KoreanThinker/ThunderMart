@@ -7,13 +7,12 @@ import Modal from "react-native-modal";
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import useNavigation from '../../hooks/useNavigation';
 import usePhone from '../../hooks/usePhone';
-
 import PriceList from './PriceList';
 import CartItem from './CartItem'
 import AddressBanner from './AddressBanner';
 import RemoveManager from './RemoveManager';
 import ShadowBorderView from '../../components/View/ShadowBorderView';
-import { formatPhone } from '../../components/functions';
+import { formatPhone, toastMessage, formatMoney } from '../../components/functions';
 
 
 
@@ -34,10 +33,20 @@ const CartScreen = () => {
 
 
     const onOrder = () => {
-        if (!number) return
-        if (cartList.length === 0) return
-        if (ttlPrice < minPrice) return
-        if (soldOutOptionIndex === 0) return
+        if (!number) {
+            toastMessage('연락처를 입력해주세요')
+            return
+        } else if (cartList.length === 0) {
+            toastMessage('상품을 골라주세요')
+            return
+        } else if (ttlPrice < minPrice) {
+            toastMessage(`최소 결제금액은 ${formatMoney(minPrice)}원 입니다.`)
+            return
+        } else if (soldOutOptionIndex === 0) {
+            toastMessage('제품이 없을 경우 담기 방법을 골라주세요')
+            return
+        }
+        navigation.navigate('OrderOptionScreen', { soldOut: soldOutOption[soldOutOptionIndex] })
     }
 
     const onAdd = () => {

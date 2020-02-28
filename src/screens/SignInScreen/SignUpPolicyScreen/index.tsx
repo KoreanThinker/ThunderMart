@@ -19,11 +19,11 @@ type policyType = {
 const data: policyType[] = [
     {
         name: '이용약관 동의',
-        url: 'https://github.com/cnjon/react-native-pdf-view'
+        url: 'https://docs.google.com/document/d/1WlYnbjSdcmsPODjRo_CnjDm5WtndfQDoFb12FOozxAM/edit?usp=sharing'
     },
     {
         name: '개인정보 처리방침',
-        url: 'https://github.com/cnjon/react-native-pdf-view'
+        url: 'https://docs.google.com/document/d/18wz3bs9dLuqfrpbMUmw2oxKnSn3udNMWxY-l9wifnRw/edit?usp=sharing'
     }
 ]
 

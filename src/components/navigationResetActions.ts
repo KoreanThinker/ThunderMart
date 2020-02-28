@@ -14,3 +14,12 @@ export const reset2SignIn = StackActions.reset({
     key: null,
     actions: [NavigationActions.navigate({ routeName: 'SignStack' })],
 });
+
+export const reset2OrderResultScreen = StackActions.reset({
+    index: 1,
+    key: null,
+    actions: [
+        NavigationActions.navigate({ routeName: 'MainBottomTab' }),
+        NavigationActions.navigate({ routeName: 'OrderResultScreen' }),
+    ],
+});
