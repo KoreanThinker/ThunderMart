@@ -4,7 +4,8 @@ import { Dimensions, StyleSheet } from 'react-native'
 export const WIDTH = Dimensions.get('window').width;
 export const HEIGHT = Dimensions.get('window').height;
 
-export const color1 = '#000'
+export const color1 = '#fff000'
+export const fontColor1 = '#000'
 export const hightLightBlue = '#0096CE';
 
 export const headerHeight = 56

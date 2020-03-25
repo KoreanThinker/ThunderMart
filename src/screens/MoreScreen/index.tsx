@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, Text, ScrollView } from 'react-native'
-import { color1, shadow, headerHeight, titleFont, defaultFont, borderBottom, cardHeight, middleFont } from '../../components/style'
+import { View, Text, ScrollView, Share } from 'react-native'
+import { color1, shadow, headerHeight, titleFont, defaultFont, borderBottom, cardHeight, middleFont, fontColor1 } from '../../components/style'
 import useNavigation from '../../hooks/useNavigation'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import useAuth from '../../hooks/useAuth'
@@ -19,21 +19,25 @@ const MoreScreen = () => {
             name: '배송지 관리',
             onClick: () => navigation.navigate('AddressStack')
         },
-        {
-            name: '배송 가능 지역',
-            onClick: () => { }
-        },
-        {
-            name: '자주 하시는 질문',
-            onClick: () => { }
-        },
-        {
-            name: '개선 사항 요청',
-            onClick: () => { }
-        },
+        // {
+        //     name: '배송 가능 지역',
+        //     onClick: () => { }
+        // },
+        // {
+        //     name: '자주 하시는 질문',
+        //     onClick: () => { }
+        // },
+        // {
+        //     name: '개선 사항 요청',
+        //     onClick: () => { }
+        // },
         {
             name: '친구에게 추천하기',
-            onClick: () => { }
+            onClick: () => {
+                Share.share({
+                    message: 'https://play.google.com/store/apps/details?id=com.saladfactory.thundermart'
+                })
+            }
         },
         {
             name: '로그아웃',
@@ -47,7 +51,7 @@ const MoreScreen = () => {
     return (
         <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
             <View style={{ backgroundColor: color1, width: '100%', height: headerHeight, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ ...titleFont, color: 'white' }}>더보기</Text>
+                <Text style={{ ...titleFont, color: fontColor1 }}>더보기</Text>
             </View>
 
 

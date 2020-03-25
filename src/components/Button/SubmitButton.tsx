@@ -15,7 +15,7 @@ const SubmitButton: React.FunctionComponent<SubmitButtonProps> = ({ isOn, onPres
             onPress={onPress}
             style={{ opacity: isOn ? 1 : 0.5, width: WIDTH - 60, alignSelf: 'center', height: cardHeight, backgroundColor: color1, borderRadius: 30, alignItems: 'center', justifyContent: 'center', marginTop: 20 }}
         >
-            <Text style={{ ...titleFont, color: 'white' }} >{title}</Text>
+            <Text style={{ ...titleFont }} >{title}</Text>
         </TouchableWithoutFeedback>
     )
 }

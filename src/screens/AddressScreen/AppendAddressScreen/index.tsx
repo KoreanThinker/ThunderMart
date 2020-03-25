@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { View, Text, ScrollView, TextInput } from 'react-native'
-import { shadow, defaultFont, WIDTH, color1, middleFont, titleFont, cardHeight, bigFont, shadowBox, alignCenter, shadowOpt } from '../../../components/style'
+import { shadow, defaultFont, WIDTH, color1, middleFont, titleFont, cardHeight, bigFont, shadowBox, alignCenter, shadowOpt, fontColor1 } from '../../../components/style'
 import LeftArrowHeader from '../../../components/Header/LeftArrowHeader'
 import useNavigation from '../../../hooks/useNavigation'
 import useAddress from '../../../hooks/useAddress'
@@ -65,7 +65,7 @@ const AppendAddressScreen = () => {
                     onPress={onSubmit}
                     style={{ opacity: basicAddress === '' || detailAddress === '' ? 0.5 : 1, width: WIDTH - 60, alignSelf: 'center', height: cardHeight, backgroundColor: color1, borderRadius: 30, alignItems: 'center', justifyContent: 'center', marginTop: 40 }}
                 >
-                    <Text style={{ ...titleFont, color: 'white' }} >배송지 추가</Text>
+                    <Text style={{ ...titleFont, color: fontColor1 }} >배송지 추가</Text>
                 </TouchableWithoutFeedback>
             </View>
         </View>

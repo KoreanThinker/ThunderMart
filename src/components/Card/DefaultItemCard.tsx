@@ -58,7 +58,7 @@ const DefaultItemCard: React.FunctionComponent<DefaultItemCardProps> = ({ item }
                         onPress={() => onCart(item)}
                         style={{ height: '100%', width: 110, alignItems: 'center', justifyContent: 'center' }}>
                         <View style={{ width: 70, height: 20, borderRadius: 20, backgroundColor: color1, alignItems: 'center', justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 9, color: 'white', fontWeight: 'bold' }}>장바구니</Text>
+                            <Text style={{ fontSize: 9, fontWeight: 'bold' }}>장바구니</Text>
                         </View>
                     </TouchableWithoutFeedback>
                     :

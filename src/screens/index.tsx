@@ -37,6 +37,7 @@ import OrderScreen, {
 } from './OrderScreen'
 
 import OrderOptionScreen from './OrderOptionScreen'
+import CoffeeFlexScreen from './CoffeeFlexScreen'
 
 const HomeStack = createStackNavigator(
     {
@@ -197,6 +198,7 @@ const MainStack = createStackNavigator(
         OrderScreen,
         OrderResultScreen,
         OrderOptionScreen,
+        CoffeeFlexScreen
     },
     {
         initialRouteName: 'MainBottomTab',

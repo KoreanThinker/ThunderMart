@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, TouchableWithoutFeedback, FlatList } from 'react-native'
 import DefaultHeader from '../../components/Header/DefaultHeader'
-import { headerHeight, alignCenter, titleFont } from '../../components/style'
+import { headerHeight, alignCenter, titleFont, fontColor1 } from '../../components/style'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { shopNameType, orderStateType } from '../../components/types'
 import OrderCard from './OrderCard'
@@ -63,10 +63,10 @@ const OrderHistoryScreen = () => {
             <DefaultHeader>
                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                     <View style={{ width: headerHeight }} />
-                    <Text style={{ ...titleFont, color: '#fff' }} >주문 내역</Text>
+                    <Text style={{ ...titleFont, color: fontColor1 }} >주문 내역</Text>
                     <TouchableWithoutFeedback onPress={onRefresh}>
                         <View style={{ width: headerHeight, height: headerHeight, ...alignCenter }} >
-                            <Icon name='refresh' size={26} color='#fff' />
+                            <Icon name='refresh' size={26} color={fontColor1} />
                         </View>
                     </TouchableWithoutFeedback>
                 </View>

@@ -102,20 +102,20 @@ const SignInScreen = () => {
     const SignInSuccess = async (type: signInType, token: string) => {
         console.log('로그인 : ' + type + ' : ' + token)
         console.log(secret.endPoint)
-        Alert.alert('1' + secret.endPoint)
+        // Alert.alert('1' + secret.endPoint)
         // try {
         const getLogin = await fetch(`${secret.endPoint}/users/login?user_token=${token}&provider=${type.toUpperCase()}`, {
             method: 'POST'
         })
         const res = await getLogin.json()
-        Alert.alert('2' + secret.endPoint + res.toString())
+        // Alert.alert('2' + secret.endPoint + res.toString())
         console.log(res)
         if (res.res_code === 0) {
             onSignIn(type, token, res.session_id)
             navigation.dispatch(reset2HomeAndAddress)
         } else {
-            Alert.alert(secret.endPoint + res.toString())
-            Alert.alert('3' + secret.endPoint)
+            // Alert.alert(secret.endPoint + res.toString())
+            // Alert.alert('3' + secret.endPoint)
             errorSoluction()
         }
         // } catch (error) {

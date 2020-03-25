@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, FlatList, TouchableOpacity, Animated } from 'react-native'
-import { color1, WIDTH, shadow, HEIGHT, hightLightBlue, cardHeight, titleFont, borderBottom, middleFont, defaultFont } from '../../components/style'
+import { color1, WIDTH, shadow, HEIGHT, hightLightBlue, cardHeight, titleFont, borderBottom, middleFont, defaultFont, fontColor1 } from '../../components/style'
 import useCart from '../../hooks/useCart';
 import { soldOutOption, minPrice } from '../../components/options'
 import Modal from "react-native-modal";
@@ -90,7 +90,7 @@ const CartScreen = () => {
                             onPress={onOrder}
                             style={{ width: WIDTH - 60, height: cardHeight, backgroundColor: color1, marginTop: 48, justifyContent: 'center', alignItems: 'center', borderRadius: 30 }}
                         >
-                            <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>주문하기</Text>
+                            <Text style={{ fontSize: 20, fontWeight: 'bold', color: fontColor1 }}>주문하기</Text>
                         </TouchableWithoutFeedback>
 
                     </View>

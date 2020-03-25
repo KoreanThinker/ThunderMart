@@ -64,6 +64,7 @@ const Postcode = (props) => {
 			onMessage={onMessage}
 			injectedJavaScript={injectedJavaScript}
 			mixedContentMode={"compatibility"}
+			onLoad={props.onLoad}
 			// useWebKit={true}
 			onShouldStartLoadWithRequest={() => true}
 		/>

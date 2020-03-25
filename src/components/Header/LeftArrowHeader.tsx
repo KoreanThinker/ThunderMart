@@ -23,11 +23,11 @@ const LeftArrowHeader: React.FunctionComponent<LeftArrowHeaderProps> = ({ title,
                             else navigation.goBack()
                         }}
                     >
-                        <Icon name='arrowleft' size={24} color='#fff' />
+                        <Icon name='arrowleft' size={24} color='#000' />
                     </TouchableWithoutFeedback>
                 </View>
 
-                <Text style={{ ...titleFont, color: '#fff' }}>{title}</Text>
+                <Text style={{ ...titleFont, color: '#000' }}>{title}</Text>
             </View>
             {/* <LinearGradient colors={['#F28811', '#FFF000']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ width: '100%', height: 1.5 }} /> */}
         </>

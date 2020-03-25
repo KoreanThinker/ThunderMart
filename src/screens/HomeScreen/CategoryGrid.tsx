@@ -18,57 +18,62 @@ const categorys = [ //서버로
     {
         name: '밥, 도시락',
         key: "0",
-        image: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSrds7AuKtcUAL2ChA7KCwJsUwZaGIsLrI__mmle1f0qQz9hK5C2SzFm0XYMvDiZz-FdoPLu31VAfA&usqp=CAc'
+        image: require('../../asset/CategoryIcon/0.png')
     },
     {
         name: '라면, 면',
         key: "1",
-        image: 'http://www.costco.co.kr/medias/sys_master/images/h55/h6e/9868094472222.jpg'
+        image: require('../../asset/CategoryIcon/1.jpg')
     },
     {
         name: '국, 찌개',
         key: "2",
-        image: 'https://www.costco.co.kr/medias/sys_master/images/h22/ha8/9867971166238.jpg'
+        image: require('../../asset/CategoryIcon/2.jpg')
     },
     {
         name: '요리, 반찬',
         key: "3",
-        image: 'http://image.auction.co.kr/itemimage/da/97/61/da9761e01.jpg'
+        image: require('../../asset/CategoryIcon/3.jpg')
     },
     {
         name: '분식, 야식',
         key: "4",
-        image: 'https://img.seoul.co.kr//img/upload/2014/12/09/SSI_20141209205317.jpg'
+        image: require('../../asset/CategoryIcon/4.jpg')
     },
     {
         name: '과일, 샐러드',
         key: "5",
-        image: 'https://lh3.googleusercontent.com/proxy/cAcqU3Cc_J8K9OLQkY1ifKYK40f8qIkH7x48bkR5KgjDU19TzUYEJsHR-6EEiEPgGbCGTqBs7_htt7dlWxMj0wMVFGIf4KwAoN74vIjXgZmzcCmgurhPv9mHtzLAA167QS7GparKhMF8A7Ff9Q'
+        image: require('../../asset/CategoryIcon/5.jpg')
     },
     {
         name: '아이스크림',
         key: "6",
-        image: 'http://img.danawa.com/prod_img/500000/150/777/img/7777150_1.jpg?shrink=500:500&_v=20190423163108'
+        image: require('../../asset/CategoryIcon/6.jpg')
     },
     {
         name: '생수, 음료',
         key: "7",
-        image: 'http://img.danawa.com/prod_img/500000/315/969/img/1969315_1.jpg?shrink=500:500&_v=20170309155800'
+        image: require('../../asset/CategoryIcon/7.jpg')
     },
     {
         name: '빵, 시리얼',
         key: "8",
-        image: 'http://image.auction.co.kr/itemimage/18/2d/69/182d693e96.jpg'
+        image: require('../../asset/CategoryIcon/8.jpg')
     },
     {
         name: '과자',
         key: "9",
-        image: 'http://img.daily.co.kr/@files/www.daily.co.kr/content_watermark/food/2018/20180314/a8e884b8a8c2dd75f6278a7dfc5c999b.jpg'
+        image: require('../../asset/CategoryIcon/9.jpg')
     },
     {
         name: '생활용품',
         key: "10",
-        image: 'http://image.auction.co.kr/itemimage/f3/4c/ea/f34cea206.jpg'
+        image: require('../../asset/CategoryIcon/10.jpg')
+    },
+    {
+        name: '커피플렉스',
+        key: "11",
+        image: require('../../asset/CategoryIcon/11.jpg')
     },
 ]
 
@@ -95,6 +100,10 @@ const CategoryGrid = () => {
 
 
     const onCategory = (categoryKey: string, category: string) => {
+        if (categoryKey == '11') {
+            navigation.navigate('CoffeeFlexScreen')
+            return
+        }
         navigation.navigate('CategoryDetailScreen', { categoryKey, category })
     }
 
@@ -116,7 +125,7 @@ const CategoryGrid = () => {
         >
             <FastImage
                 style={{ width: '100%', height: BOXSIZE - 50 }}
-                source={{ uri: item.image }}
+                source={item.image}
                 resizeMode='contain'
             />
             <Text style={{ fontSize: 13, fontWeight: 'bold', marginTop: 6 }}>{item.name}</Text>
